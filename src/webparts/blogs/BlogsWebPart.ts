@@ -7,28 +7,19 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 import * as $ from "jquery";
-import * as jQuery from "jquery";
+
 window["jQuery"] = window["$"] = $;
 import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons';
-import {PropertyFieldMultiSelect} from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
 
-import {PropertyPaneChoiceGroup,
 
-  IPropertyPaneDropdownOption,
-
-  PropertyPaneCheckbox,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneSlider,
-  PropertyPaneToggle,
+import {
   PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { sp } from "@pnp/sp/presets/all";
 require("uikit/dist/css/uikit.min.css");
 require("uikit/dist/js/uikit.min.js");
-import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
-import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
+
 import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
 
 
@@ -109,26 +100,7 @@ b.forEach(element => {
 
     $("body")
 .append(`<style id="createtabs" type="text/css">
-@font-face {
-  font-family: 'Bristol';
-  src: url(/sites/Northwell/SiteAssets/MFTBristol-Regular.ttf);
-}
-@font-face {
-  font-family: 'thesans';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-5_Plain.otf);
-}
-@font-face {
-  font-family: 'thesanssemibold';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-6_SemiBold.otf);
-}
-@font-face {
-  font-family: 'thesansbold';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-7_Bold.otf);
-}
-@font-face {
-  font-family: 'minion';
-  src: url(/sites/Northwell/SiteAssets/MinionPro-Regular.otf);
-}
+
 .uk-card-title, .uk-card-body p, .uk-card-footer a{font-family:'thesans' !Important;text-transform:none}
 .cta{color:`+colorstyle+` !important; font-family: 'thesans';}
 .triangle{width: 0;

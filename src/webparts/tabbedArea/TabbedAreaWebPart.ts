@@ -10,16 +10,8 @@ import * as jQuery from "jquery";
 window["jQuery"] = window["$"] = $;
 import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons';
-import {PropertyFieldMultiSelect} from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
-import {PropertyPaneChoiceGroup,
 
-  IPropertyPaneDropdownOption,
-
-  PropertyPaneCheckbox,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneSlider,
-  PropertyPaneToggle,
+import {
   PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { sp } from "@pnp/sp/presets/all";
@@ -27,7 +19,7 @@ require("uikit/dist/css/uikit.min.css");
 require("uikit/dist/js/uikit.min.js");
 import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
 import * as strings from 'TabbedAreaWebPartStrings';
-import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
+
 import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
 
 export interface ITabbedAreaWebPartProps {
@@ -175,26 +167,7 @@ if(this.properties.filePickerResult5==undefined){image5 = ""} else {image5 = thi
 if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = this.properties.filePickerResult6.fileAbsoluteUrl}
     $("body")
 .append(`<style id="createtabs" type="text/css">
-@font-face {
-  font-family: 'Bristol';
-  src: url(/sites/Unilever/SiteAssets/UnileverShilling.woff);
-}
-@font-face {
-  font-family: 'thesans';
-  src: url(/sites/Unilever/SiteAssets/UnileverShilling.woff);
-}
-@font-face {
-  font-family: 'thesanssemibold';
-  src: url(/sites/Unilever/SiteAssets/UnileverShillingBold.woff);
-}
-@font-face {
-  font-family: 'thesansbold';
-  src: url(/sites/Unilever/SiteAssets/UnileverShillingBold.woff);
-}
-@font-face {
-  font-family: 'minion';
-  src: url(/sites/Northwell/SiteAssets/MinionPro-Regular.otf);
-}
+
 .tabsuk-switcher{margin-bottom:-20px !important}
 .uk-slideshow-items>*{max-height:800px}
 #workbenchPageContent{max-width:1500px}
@@ -325,6 +298,8 @@ if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = thi
     sp.setup({
       spfxContext: this.context});
 
+  // HERE WE ARE REMOVING THE BRISTOL FONT MARKDOWN FOR THE TAB HEADERS WHICH ALLOWS US TO USE THE SAME PROPERTY PANE ITEM FOR BOTH TAB AND CONTENT TITLE
+
       if(this.properties.tab1title !=undefined){var strippedtitle1 = this.properties.tab1title.replace("[","").replace("]","").replace("|","")}
       if(this.properties.tab2title !=undefined){var strippedtitle2 = this.properties.tab2title.replace("[","").replace("]","").replace("|","")}
       if(this.properties.tab3title !=undefined){var strippedtitle3 = this.properties.tab3title.replace("[","").replace("]","").replace("|","")}
@@ -451,14 +426,17 @@ else if(this.properties.type =="layers"){
 </div></div>
 `}
 else if(this.properties.type =="tabs"){
+
+  // HERE WE ARE ADDING THE STRIPPED TITLES FROM THE VARIABLES ABOVE
+
   var content = `
     <ul style="width:100%;`+mainfont+`;text-transform:none !important" class="uk-subnav uk-subnav-pill  uk-child-width-expand" uk-switcher="animation: uk-animation-fade">
-    <li id="tabmenu1`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#">`+strippedtitle1+`</a></li>
-    <li id="tabmenu2`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#" href="#">`+strippedtitle2+`</a></li>
-    <li id="tabmenu3`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#" href="#">`+strippedtitle3+`</a></li>
-    <li id="tabmenu4`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#" href="#">`+strippedtitle4+`</a></li>
-    <li id="tabmenu5`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#" href="#">`+strippedtitle5+`</a></li>
-    <li id="tabmenu6`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important" href="#" href="#">`+strippedtitle6+`</a></li>
+    <li id="tabmenu1`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#">`+strippedtitle1+`</a></li>
+    <li id="tabmenu2`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle2+`</a></li>
+    <li id="tabmenu3`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle3+`</a></li>
+    <li id="tabmenu4`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle4+`</a></li>
+    <li id="tabmenu5`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle5+`</a></li>
+    <li id="tabmenu6`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle6+`</a></li>
 </ul>
 
 <ul style="width:100%; margin-bottom:-20px !important" class="tabsuk-switcher uk-switcher uk-margin">
@@ -803,7 +781,10 @@ else if(this.properties.type =="tabs"){
 
    `};
 jQuery(attach).append(content);
-console.log(this.properties.sliderWithCallout)
+
+
+  // HERE WE ARE REMOVING SETTING VARIABLES FOR EACH SECTION ID IN THE CONTENT TO ALLOW REMOVAL OF UNWANTED SECTIONS USING THE SLIDER IN THE WEBPART PROPERTY PANE
+
 var id3 = "#tabmenu3"+uniqueref;
 var id4 = "#tabmenu4"+uniqueref;
 var id5 = "#tabmenu5"+uniqueref;
@@ -818,6 +799,8 @@ var lid3 = "#layer3"+uniqueref;
 var lid4 = "#layer4"+uniqueref;
 var lid5 = "#layer5"+uniqueref;
 var lid6 = "#layer6"+uniqueref;
+
+  // HERE WE ARE REMOVING SETTING SECTIONS FROM VIEW IF THE SLIDER IS SET TO EACH OF THE DEFINED SLIDER STEPS
    if(this.properties.sliderWithCallout == undefined){}
    else if (this.properties.sliderWithCallout ==2){
 

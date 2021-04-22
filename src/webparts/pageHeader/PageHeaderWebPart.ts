@@ -5,51 +5,29 @@ import {
   PropertyPaneTextField,
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
-import { escape } from "@microsoft/sp-lodash-subset";
-import { SPComponentLoader } from "@microsoft/sp-loader";
 
 import { sp } from "@pnp/sp/presets/all";
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import * as strings from "PageHeaderWebPartStrings";
-import "cropperjs/dist/cropper.css";
-
-import * as Cropper from "cropperjs/dist/cropper.min.js";
 import {
   PropertyFieldFilePicker,
-  IPropertyFieldFilePickerProps,
   IFilePickerResult,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
 
-import { setup as pnpSetup, FileAddResult } from "sp-pnp-js";
-
 import * as $ from "jquery";
-import * as jQuery from "jquery";
+
 window["jQuery"] = window["$"] = $;
 
-import { PropertyFieldMultiSelect } from "@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect";
 import {
-  PropertyFieldCodeEditor,
-  PropertyFieldCodeEditorLanguages,
-} from "@pnp/spfx-property-controls/lib/PropertyFieldCodeEditor";
-import MediumEditor from "medium-editor";
-import {
-  PropertyPaneChoiceGroup,
   IPropertyPaneDropdownOption,
   PropertyPaneCheckbox,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneSlider,
-  PropertyPaneToggle,
   PropertyPaneDropdown,
-  PropertyPaneButton,
 } from "@microsoft/sp-property-pane";
 
 require("uikit/dist/css/uikit.min.css");
 require("uikit/dist/js/uikit.min.js");
 
-import SocialPost from "editorjs-social-post-plugin";
-const num = Math.random().toString(36).substring(7);
 export interface IPageHeaderWebPartProps {
   description: string;
   Page: string;
@@ -422,26 +400,7 @@ li[data-tool*="table"]{display:none}</style>`);
     $("#pageheader").remove();
     $("body").append(
       `<style id="pageheader" type="text/css">
-@font-face {
-  font-family: 'Bristol';
-  src: url(/sites/Northwell/SiteAssets/MFTBristol-Regular.ttf);
-}
-@font-face {
-  font-family: 'thesans';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-5_Plain.otf);
-}
-@font-face {
-  font-family: 'thesanssemibold';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-6_SemiBold.otf);
-}
-@font-face {
-  font-family: 'thesansbold';
-  src: url(/sites/Northwell/SiteAssets/TheSansC5-7_Bold.otf);
-}
-@font-face {
-  font-family: 'minion';
-  src: url(/sites/Northwell/SiteAssets/MinionPro-Regular.otf);
-}
+
 .triangleheader{width: 0;
   height: 0;
   border: 0 solid transparent;
@@ -497,43 +456,7 @@ div[data-automation-id*="pageHeader"]{display:` +
   background-position: right top;
 }
 
-.cke_editable h2{font-size:40px;font-family: "thesans";color:` +
-        slidenav +
-        ` !important;line-height:50px}
-.cke_editable h3{font-size:35px;font-family: "thesans";color:` +
-        slidenav +
-        ` !important;line-height:45px}
-.cke_editable h4{font-size:30px;font-family: "thesans";color:` +
-        slidenav +
-        ` !important;line-height:40px}
-.cke_editable a {
-  font-family: 'thesans';
-  color:` +
-        slidenav +
-        `;
-  font-size: 15px;
-}
-.cke_editable a::before{
-  content:"";
- width: 0;
- height: 0;
- border: 0 solid transparent;
- border-left-width: 22px;
- border-right-width: 1px;
- border-top: 18px solid ` +
-        slidenav +
-        ` !important;
- top: 19px;
-   position: relative;
-   left: -6px;
-}
-.cke_editable a {
-  font-family: 'thesans';
-  color: ` +
-        slidenav +
-        ` !important;
-  font-size: 15px;
-}
+
 </style>
 `
     );

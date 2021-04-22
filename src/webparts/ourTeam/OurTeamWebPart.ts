@@ -10,25 +10,10 @@ import * as jQuery from "jquery";
 window["jQuery"] = window["$"] = $;
 import UIkit from 'uikit'
 import Icons from 'uikit/dist/js/uikit-icons';
-import {PropertyFieldMultiSelect} from '@pnp/spfx-property-controls/lib/PropertyFieldMultiSelect';
-
-import {PropertyPaneChoiceGroup,
-
-  IPropertyPaneDropdownOption,
-
-  PropertyPaneCheckbox,
-  PropertyPaneLabel,
-  PropertyPaneLink,
-  PropertyPaneSlider,
-  PropertyPaneToggle,
-  PropertyPaneDropdown
-} from '@microsoft/sp-property-pane';
 import { sp } from "@pnp/sp/presets/all";
 require("uikit/dist/css/uikit.min.css");
 require("uikit/dist/js/uikit.min.js");
-import { PropertyFieldFilePicker, IPropertyFieldFilePickerProps, IFilePickerResult } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
-import { CalloutTriggers } from '@pnp/spfx-property-controls/lib/PropertyFieldHeader';
-import { PropertyFieldSliderWithCallout } from '@pnp/spfx-property-controls/lib/PropertyFieldSliderWithCallout';
+
 
 import * as strings from 'OurTeamWebPartStrings';
 
