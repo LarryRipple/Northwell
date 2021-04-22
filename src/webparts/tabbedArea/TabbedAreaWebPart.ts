@@ -165,6 +165,8 @@ if(this.properties.filePickerResult3==undefined){image3 = ""} else {image3 = thi
 if(this.properties.filePickerResult4==undefined){image4 = ""} else {image4 = this.properties.filePickerResult4.fileAbsoluteUrl}
 if(this.properties.filePickerResult5==undefined){image5 = ""} else {image5 = this.properties.filePickerResult5.fileAbsoluteUrl}
 if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = this.properties.filePickerResult6.fileAbsoluteUrl}
+
+var url = this.context.pageContext.web.absoluteUrl;
     $("body")
 .append(`<style id="createtabs" type="text/css">
 
@@ -274,7 +276,7 @@ if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = thi
     .uk-overlay {
       padding: 30px;
       background: rgba(0,154,223,0.4);
-      background-image: url(/sites/Northwell/Shared%20Documents/NW_BehindImage_Blue_1.png);
+      background-image: url(`+url+`/Shared%20Documents/NW_BehindImage_Blue_1.png);
       background-repeat: no-repeat;
       background-position: right top;
   }
@@ -283,13 +285,13 @@ if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = thi
 
 
     background: `+overlaycolor+`;
-    background-image: url(/sites/Northwell/Shared%20Documents/NW_BehindImage_`+colorimage+`_1.png);
+    background-image: url(`+url+`/Shared%20Documents/NW_BehindImage_`+colorimage+`_1.png);
     background-repeat: no-repeat;
     background-position: right top;}
      .cke_editable a{font-family: 'thesans';color:`+slidenav+`; font-size:15px}
      .uk-overlay-primary {
       background-color: `+overlaycolor+`;
-      background-image: url(/sites/Northwell/Shared%20Documents/NW_BehindImage_`+colorimage+`_1.png);
+      background-image: url(`+url+`/Shared%20Documents/NW_BehindImage_`+colorimage+`_1.png);
       background-repeat: no-repeat;
       background-position: right top;
   }

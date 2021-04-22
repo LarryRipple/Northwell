@@ -398,6 +398,7 @@ li[data-tool*="table"]{display:none}</style>`);
     });
 
     $("#pageheader").remove();
+    var url = this.context.pageContext.web.absoluteUrl;
     $("body").append(
       `<style id="pageheader" type="text/css">
 
@@ -451,7 +452,7 @@ div[data-automation-id*="pageHeader"]{display:` +
 .headerimg {
   padding: 30px;
   background: rgba(0,154,223,0.4);
-  background-image: url(/sites/Northwell/Shared%20Documents/NW_headerimage_overlay_1.png);
+  background-image: url(`+url+`/Shared%20Documents/NW_headerimage_overlay_1.png);
   background-repeat: no-repeat;
   background-position: right top;
 }
