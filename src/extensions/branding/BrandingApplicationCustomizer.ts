@@ -29,7 +29,7 @@ export default class BrandingApplicationCustomizer
   public onInit(): Promise<void> {
 
 var url = this.context.pageContext.web.absoluteUrl;
-console.log(url)
+
 
     var colorstyle = $("#pagecolor").text();
     var slidenav;

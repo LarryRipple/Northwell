@@ -137,26 +137,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     }
     $("body").append(
       `<style id="createvideo" type="text/css">
-    @font-face {
-      font-family: 'Bristol';
-      src: url(/sites/Northwell/SiteAssets/MFTBristol-Regular.ttf);
-    }
-    @font-face {
-      font-family: 'thesans';
-      src: url(/sites/Northwell/SiteAssets/TheSansC5-5_Plain.otf);
-    }
-    @font-face {
-      font-family: 'thesanssemibold';
-      src: url(/sites/Northwell/SiteAssets/TheSansC5-6_SemiBold.otf);
-    }
-    @font-face {
-      font-family: 'thesansbold';
-      src: url(/sites/Northwell/SiteAssets/TheSansC5-7_Bold.otf);
-    }
-    @font-face {
-      font-family: 'minion';
-      src: url(/sites/Northwell/SiteAssets/MinionPro-Regular.otf);
-    }
+
     [class*=uk-position-bottom], [class*=uk-position-center], [class*=uk-position-left], [class*=uk-position-right], [class*=uk-position-top] {
       position: absolute!important;
       max-width: 50%;
