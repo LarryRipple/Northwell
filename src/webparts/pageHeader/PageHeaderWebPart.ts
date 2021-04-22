@@ -73,9 +73,7 @@ li[data-tool*="table"]{display:none}</style>`);
         $("body").append(
           '<style> li[data-tool*="' + element + '"]{display:flex}</style>'
         );
-        console.log(
-          '<style> li[data-tool*="' + element + '"]{display:inline}</style>'
-        );
+
       });
     }
     function getQueryStringParameter(param) {
@@ -134,7 +132,7 @@ li[data-tool*="table"]{display:none}</style>`);
     }
     var headertext;
     var headerreptext;
-    console.log(this.properties.color);
+
     if (this.properties.color == undefined) {
       headertext = "#007DB8";
     } else if (this.properties.color == "#009adf") {
@@ -495,11 +493,11 @@ div[data-automation-id*="pageHeader"]{display:` +
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
                   onSave: (e: IFilePickerResult) => {
-                    console.log(e);
+
                     this.properties.filePickerResult = e;
                   },
                   onChanged: (e: IFilePickerResult) => {
-                    console.log(e);
+
                     this.properties.filePickerResult = e;
                   },
                   key: "filePickerId",

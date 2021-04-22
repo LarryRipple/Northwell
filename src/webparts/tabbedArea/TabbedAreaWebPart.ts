@@ -88,7 +88,7 @@ else if(this.properties.display == "split"){contentsplit = "background:color:"+c
 
 var mina = `font-family: 'Bristol' !important;`
 var mainfont = `font-family: 'thesans' !important;`
-console.log(colorstyle)
+
 if(this.properties.display !=undefined){}
 if(colorstyle ==undefined){headertext = "#6dc3df"} else
 if(colorstyle =="#009adf"){headertext = "#6dc3df"} else
@@ -949,8 +949,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult1,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult1 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult1 = e; },
+                  onSave: (e: IFilePickerResult) => {  this.properties.filePickerResult1 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult1 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",
@@ -985,8 +985,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult2,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult2 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult2 = e; },
+                  onSave: (e: IFilePickerResult) => {  this.properties.filePickerResult2 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult2 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",
@@ -1021,8 +1021,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult3,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult3 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult3 = e; },
+                  onSave: (e: IFilePickerResult) => { this.properties.filePickerResult3 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult3 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",
@@ -1057,8 +1057,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult4,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult4 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult4 = e; },
+                  onSave: (e: IFilePickerResult) => { this.properties.filePickerResult4 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult4 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",
@@ -1093,8 +1093,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult5,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult5 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult5 = e; },
+                  onSave: (e: IFilePickerResult) => {  this.properties.filePickerResult5 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult5 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",
@@ -1129,8 +1129,8 @@ var lid6 = "#layer6"+uniqueref;
                   filePickerResult: this.properties.filePickerResult6,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
-                  onSave: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult6 = e;  },
-                  onChanged: (e: IFilePickerResult) => { console.log(e); this.properties.filePickerResult6 = e; },
+                  onSave: (e: IFilePickerResult) => {  this.properties.filePickerResult6 = e;  },
+                  onChanged: (e: IFilePickerResult) => { this.properties.filePickerResult6 = e; },
                   key: "filePickerId",
                   buttonLabel: "Select Image ",
                   label: "Select Image",

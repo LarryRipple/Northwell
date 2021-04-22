@@ -28,7 +28,7 @@ export default class OurTeamWebPart extends BaseClientSideWebPart<IOurTeamWebPar
       spfxContext: this.context});
 
  sp.web.lists.getByTitle("bios").items.select("FileRef/FileRef, Description, Biography, Title").top(10).get().then(b => {
-console.log(b)
+
       b.forEach(element => {
 var elementhtml = `<div>
 <div class="uk-card uk-card-default">

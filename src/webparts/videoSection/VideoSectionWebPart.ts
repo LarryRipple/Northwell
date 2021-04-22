@@ -72,7 +72,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     }
     contentsplit = "background:color:" + this.properties.color;
 
-    console.log(this.properties.color);
+
 
     if (this.properties.color == undefined) {
       headertext = "#6dc3df";
@@ -340,11 +340,11 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,
                   onSave: (e: IFilePickerResult) => {
-                    console.log(e);
+
                     this.properties.filePickerResult = e;
                   },
                   onChanged: (e: IFilePickerResult) => {
-                    console.log(e);
+
                     this.properties.filePickerResult = e;
                   },
                   key: "filePickerId",
