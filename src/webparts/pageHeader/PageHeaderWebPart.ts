@@ -2,7 +2,7 @@ import { DisplayMode, Version } from "@microsoft/sp-core-library";
 import {
   IPropertyPaneConfiguration,
   PropertyPaneButtonType,
-  PropertyPaneTextField,
+  PropertyPaneTextField,PropertyPaneChoiceGroup
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 
@@ -33,6 +33,7 @@ export interface IPageHeaderWebPartProps {
   Page: string;
   multiSelect: string[];
   filePickerResult: IFilePickerResult;
+  imageposition: string;
   color: string;
   actiontext: string;
   actionlink: string;
@@ -68,6 +69,7 @@ li[data-tool*="warning"]{display:none}
 li[data-tool*="checklist"]{display:none}
 li[data-tool*="quote"]{display:none}
 li[data-tool*="linkTool"]{display:none}
+
 li[data-tool*="table"]{display:none}</style>`);
       selectedcanvaselements.forEach((element) => {
         $("body").append(
@@ -171,11 +173,8 @@ li[data-tool*="table"]{display:none}</style>`);
       mainfont +
       `height: 460px;
       overflow: hidden;" class="uk-inline">
-    <img id="itemimage" style="width:100vw" src="` +
-      fileurl +
-      `" alt="` +
-      this.properties.title +
-      `">
+
+      <div style="width:100vw; height:800px; background-position:`+this.properties.imageposition+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+fileurl+`" uk-img></div>
     <div style="background-color: ` +
       overlaycolor +
       `" class="uk-overlay headerimg uk-position-cover">
@@ -197,7 +196,9 @@ li[data-tool*="table"]{display:none}</style>`);
       mainfont +
       `color:` +
       headertext +
-      `; font-size:50px" id="bodytitle">` +
+      `; font-size:50px" data-item="` +
+      this.properties.title +
+      `" id="bodytitle">` +
       headingendreplacetext +
       `</h1>
 
@@ -205,12 +206,18 @@ li[data-tool*="table"]{display:none}</style>`);
             <div style="width:85%;margin:auto; background:transparent;font-weight:600;line-height:40px;font-size:21px; ` +
       mainfont +
       `">
-            </br><div class="ce-paragraph">` +
+            </br><div data-item="` +
+            this.properties.bodytext +
+            `" class="ce-paragraph">` +
       this.properties.bodytext +
       `</div>
-           <a style="width:85%;margin:auto;position:relative;left:30px;top:7px;font-size:12pt" class="ctaheader"  href="` +
+           <a  data-item="` +
+           this.properties.actiontext +
+           `" style="width:85%;margin:auto;position:relative;left:30px;top:7px;font-size:12pt" class="ctaheader"  href="` +
       this.properties.actionlink +
-      `"> <i style="" class="triangleheader"></i>` +
+      `"> <i  data-item="` +
+      this.properties.actiontext +
+      `" class="triangleheader"></i>` +
       this.properties.actiontext +
       `</a>
             </div>
@@ -399,7 +406,7 @@ li[data-tool*="table"]{display:none}</style>`);
     var url = this.context.pageContext.web.absoluteUrl;
     $("body").append(
       `<style id="pageheader" type="text/css">
-
+      [data-item*="undefined"]{display:none}
 .triangleheader{width: 0;
   height: 0;
   border: 0 solid transparent;
@@ -504,6 +511,30 @@ div[data-automation-id*="pageHeader"]{display:` +
                   buttonLabel: "Choose Image",
                   label: "Choose Image",
                 }),
+                PropertyPaneChoiceGroup('imageposition', {
+                  label: "Image position",
+                  options: [
+                    { key: 'top', text: 'Top',
+                    imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                    imageSize: { width: 36, height: 36 },
+                    selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                  },
+
+                   { key: 'bottom', text: 'Bottom',
+                     imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                     imageSize: { width: 36, height: 36 },
+                     selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                   },
+                   { key: 'center', text: 'Center',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+                 }
+
+
+
+                 ]
+               }),
                 PropertyPaneCheckbox("showheader", {
                   text: "Hide page header",
                 }),

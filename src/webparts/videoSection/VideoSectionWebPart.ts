@@ -188,7 +188,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
         ` !important;
           color: #fff !important;
       }
-      canvas, img, video {
+       video {
         max-width: 100vw;
         height: auto;
         box-sizing: border-box;

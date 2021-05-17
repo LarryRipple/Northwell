@@ -8,7 +8,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import * as $ from "jquery";
 import * as jQuery from "jquery";
 window["jQuery"] = window["$"] = $;
-import UIkit from 'uikit'
+import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import { sp } from "@pnp/sp/presets/all";
 require("uikit/dist/css/uikit.min.css");
@@ -40,10 +40,10 @@ var elementhtml = `<div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
     </div>
 </div></div>
-`
-$("#bios").append(elementhtml)
+`;
+$("#bios").append(elementhtml);
 
-      })})
+      });});
     this.domElement.innerHTML = `<div id="bios" class="uk-child-width-1-2@m" uk-grid>
 
     <div>

@@ -9,7 +9,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import * as $ from "jquery";
 import * as jQuery from "jquery";
 window["jQuery"] = window["$"] = $;
-import UIkit from 'uikit'
+import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import { sp } from "@pnp/sp/presets/all";
 require("uikit/dist/css/uikit.min.css");
@@ -27,9 +27,9 @@ export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps
   public render(): void {
     var colorstyle =$("#pagecolor").text();
     var slidenav;
-        if(colorstyle =="undefined"){slidenav = "#007DB8"} else
-    if(colorstyle =="#009adf"){slidenav = "#007DB8"} else
-    if(colorstyle =="#5c0b8a"){slidenav = "#5c0b8a"}
+        if(colorstyle =="undefined"){slidenav = "#007DB8";} else
+    if(colorstyle =="#009adf"){slidenav = "#007DB8";} else
+    if(colorstyle =="#5c0b8a"){slidenav = "#5c0b8a";}
     $("body")
     .append(`<style id="createfaq" type="text/css">
 
@@ -70,7 +70,7 @@ export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps
     padding: 20px;
     padding-top: 10px;
   }
-    </style>`)
+    </style>`);
 
     this.domElement.innerHTML = `
 
@@ -93,7 +93,7 @@ if(this.properties.collectionData !=undefined){
         </div>
     </li>
 
-        `)
+        `);
 
       });}
 

@@ -156,7 +156,7 @@ $("#BRANDING").remove();
 }
 
 
-   </style>`)
+   </style>`);
 
     return Promise.resolve();
   }

@@ -9,7 +9,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import * as $ from "jquery";
 
 window["jQuery"] = window["$"] = $;
-import UIkit from 'uikit'
+import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 
 
@@ -43,24 +43,24 @@ var cta;
     var colorstyle =$("#pagecolor").text();
     const uniqueref = Math.floor(Math.random()*90000) + 10000;
     const attach = "#"+uniqueref;
-    if(colorstyle =="undefined"){slidenav = "#004f9c"} else
-    if(colorstyle ==undefined){slidenav = "#004f9c"} else
-    if(colorstyle =="#009adf"){slidenav = "#004f9c"} else
-    if(colorstyle =="#5c0b8a"){slidenav = "#5c0b8a"}
+    if(colorstyle =="undefined"){slidenav = "#004f9c";} else
+    if(colorstyle ==undefined){slidenav = "#004f9c";} else
+    if(colorstyle =="#009adf"){slidenav = "#004f9c";} else
+    if(colorstyle =="#5c0b8a"){slidenav = "#5c0b8a";}
 
-    if(colorstyle =="undefined"){cta = "#6dc3df"} else
-    if(colorstyle ==undefined){cta = "#6dc3df"} else
-    if(colorstyle =="#009adf"){cta = "#6dc3df"} else
-    if(colorstyle =="#5c0b8a"){cta = "#c38ebe"}
+    if(colorstyle =="undefined"){cta = "#6dc3df";} else
+    if(colorstyle ==undefined){cta = "#6dc3df";} else
+    if(colorstyle =="#009adf"){cta = "#6dc3df";} else
+    if(colorstyle =="#5c0b8a"){cta = "#c38ebe";}
     var filter = "OData__TopicHeader eq '"+this.properties.filter+"'";
 var imgh;
-if(this.properties.sliderWithCallout ==undefined){imgh ="200"} else
-if(this.properties.sliderWithCallout ==3){imgh ="200"} else
-if(this.properties.sliderWithCallout ==2){imgh ="300"} else
-if(this.properties.sliderWithCallout ==4){imgh ="150"}
+if(this.properties.sliderWithCallout ==undefined){imgh ="200";} else
+if(this.properties.sliderWithCallout ==3){imgh ="200";} else
+if(this.properties.sliderWithCallout ==2){imgh ="300";} else
+if(this.properties.sliderWithCallout ==4){imgh ="150";}
 var itemstoshow;
-if(this.properties.items ==undefined){itemstoshow =2} else
-{itemstoshow= +this.properties.items}
+if(this.properties.items ==undefined){itemstoshow =2;} else
+{itemstoshow= +this.properties.items;}
     var items =  sp.web.lists.getByTitle("Site Pages").items.filter(filter).top(itemstoshow).get().then(b => {
 
 b.forEach(element => {
@@ -119,7 +119,7 @@ b.forEach(element => {
 
     .cardhover:hover .triangle{border-top: 18px solid `+cta+` !important;}
     .cardhover:hover .cta{color: `+cta+` !important;;}
-</style>`)
+</style>`);
   }
 
 

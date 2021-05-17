@@ -8,11 +8,11 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import * as $ from "jquery";
 import * as jQuery from "jquery";
 window["jQuery"] = window["$"] = $;
-import UIkit from 'uikit'
+import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 
 import {
-  PropertyPaneDropdown
+  PropertyPaneDropdown, PropertyPaneChoiceGroup
 } from '@microsoft/sp-property-pane';
 import { sp } from "@pnp/sp/presets/all";
 require("uikit/dist/css/uikit.min.css");
@@ -27,36 +27,42 @@ export interface ITabbedAreaWebPartProps {
   tab1title: string;
   tab1text: string;
   tab1image: string;
+  tab1position: string;
   actiontext: string;
   actionlink: string;
   filePickerResult1: IFilePickerResult;
   tab2title: string;
   tab2text: string;
   tab2image: string;
+  tab2position: string;
   filePickerResult2: IFilePickerResult;
   actiontext2: string;
   actionlink2: string;
   tab3title: string;
   tab3text: string;
   tab3image: string;
+  tab3position: string;
   filePickerResult3: IFilePickerResult;
   actiontext3: string;
   actionlink3: string;
   tab5title: string;
   tab5text: string;
   tab5image: string;
+  tab5position: string;
   filePickerResult5: IFilePickerResult;
   actiontext5: string;
   actionlink5: string;
   tab6title: string;
   tab6text: string;
   tab6image: string;
+  tab6position: string;
   filePickerResult6: IFilePickerResult;
   actiontext6: string;
   actionlink6: string;
   tab4title: string;
   tab4text: string;
   tab4image: string;
+  tab4position: string;
   filePickerResult4: IFilePickerResult;
   actiontext4: string;
   actionlink4: string;
@@ -70,7 +76,7 @@ export default class TabbedAreaWebPart extends BaseClientSideWebPart<ITabbedArea
   public render(): void {
     var colorstyle =$("#pagecolor").text();
     const uniqueref = Math.floor(Math.random()*90000) + 10000;
-    const attach = "#"+uniqueref
+    const attach = "#"+uniqueref;
 const width = window.screen.availWidth;
     var headertext;
     var headertextdark;
@@ -79,78 +85,78 @@ var overlaycolor;
 var contentsplit;
 var slidenav;
 var colorimage;
-if(colorstyle ==undefined){slidenav = "#7dcdee"} else
-if(colorstyle =="#009adf"){slidenav = "#7dcdee"} else
-if(colorstyle =="#5c0b8a"){slidenav = "#c38ebe"}
-if(this.properties.display == undefined){contentsplit = "background:color:transparent"}
-else if(this.properties.display == "image"){contentsplit = "background:color:transparent"}
-else if(this.properties.display == "split"){contentsplit = "background:color:"+colorstyle}
+if(colorstyle ==undefined){slidenav = "#7dcdee";} else
+if(colorstyle =="#009adf"){slidenav = "#7dcdee";} else
+if(colorstyle =="#5c0b8a"){slidenav = "#c38ebe";}
+if(this.properties.display == undefined){contentsplit = "background:color:transparent";}
+else if(this.properties.display == "image"){contentsplit = "background:color:transparent";}
+else if(this.properties.display == "split"){contentsplit = "background:color:"+colorstyle;}
 
-var mina = `font-family: 'Bristol' !important;`
-var mainfont = `font-family: 'thesans' !important;`
+var mina = `font-family: 'Bristol' !important;`;
+var mainfont = `font-family: 'thesans' !important;`;
 
 if(this.properties.display !=undefined){}
-if(colorstyle ==undefined){headertext = "#6dc3df"} else
-if(colorstyle =="#009adf"){headertext = "#6dc3df"} else
-{headertext = "#bd83ca"}
+if(colorstyle ==undefined){headertext = "#6dc3df";} else
+if(colorstyle =="#009adf"){headertext = "#6dc3df";} else
+{headertext = "#bd83ca";}
 if(this.properties.display !=undefined){}
-if(colorstyle ==undefined){headertextdark = "#004f9c"} else
-if(colorstyle =="#009adf"){headertextdark = "#004f9c"} else
-{headertextdark = "#60257e"}
+if(colorstyle ==undefined){headertextdark = "#004f9c";} else
+if(colorstyle =="#009adf"){headertextdark = "#004f9c";} else
+{headertextdark = "#60257e";}
 
-if(colorstyle ==undefined){headerreptext = "#003ca5"} else
-if(colorstyle =="#009adf"){headerreptext = "#003ca5"} else
-if(colorstyle =="#5c0b8a"){headerreptext = "#9e29b5"}
+if(colorstyle ==undefined){headerreptext = "#003ca5";} else
+if(colorstyle =="#009adf"){headerreptext = "#003ca5";} else
+if(colorstyle =="#5c0b8a"){headerreptext = "#9e29b5";}
 
-if(colorstyle ==undefined){overlaycolor = "rgba(0,60,165,.6)"} else
-if(colorstyle =="#009adf"){overlaycolor = "rgba(0,60,165,.6)"} else
-if(colorstyle =="#5c0b8a"){overlaycolor = "rgba(92,11,138,.6)"}
-if(colorstyle ==undefined){colorimage = "blue"} else
-if(colorstyle =="#009adf"){colorimage = "blue"} else
-if(colorstyle =="#5c0b8a"){colorimage = "purple"}
+if(colorstyle ==undefined){overlaycolor = "rgba(0,60,165,.6)";} else
+if(colorstyle =="#009adf"){overlaycolor = "rgba(0,60,165,.6)";} else
+if(colorstyle =="#5c0b8a"){overlaycolor = "rgba(92,11,138,.6)";}
+if(colorstyle ==undefined){colorimage = "blue";} else
+if(colorstyle =="#009adf"){colorimage = "blue";} else
+if(colorstyle =="#5c0b8a"){colorimage = "purple";}
 
-if(this.properties.display == undefined){contentsplit = "background-color:transparent"}
-else if(this.properties.display == "image"){contentsplit = "background-color:transparent"}
-else if(this.properties.display == "split"){contentsplit = "background-color:"+colorstyle}
+if(this.properties.display == undefined){contentsplit = "background-color:transparent";}
+else if(this.properties.display == "image"){contentsplit = "background-color:transparent";}
+else if(this.properties.display == "split"){contentsplit = "background-color:"+colorstyle;}
 if (this.properties.tab1title !=undefined){
 var headingreplacetext = this.properties.tab1title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-var headingendreplacetext = headingreplacetext.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext = ""}
+var headingendreplacetext = headingreplacetext.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext = "";}
 if (this.properties.tab5title !=undefined){
   var headingreplacetext5 = this.properties.tab5title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-  var headingendreplacetext5 = headingreplacetext5.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext5 = ""}
+  var headingendreplacetext5 = headingreplacetext5.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext5 = "";}
   if (this.properties.tab6title !=undefined){
     var headingreplacetext6 = this.properties.tab6title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-    var headingendreplacetext6 = headingreplacetext6.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext6 = ""}
+    var headingendreplacetext6 = headingreplacetext6.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext6 = "";}
 if (this.properties.tab1title !=undefined){
   var headingreplacetextdark = this.properties.tab1title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-  var headingendreplacetextdark = headingreplacetextdark.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark = ""}
+  var headingendreplacetextdark = headingreplacetextdark.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark = "";}
   if (this.properties.tab2title !=undefined){
     var headingreplacetextdark2 = this.properties.tab2title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-    var headingendreplacetextdark2 = headingreplacetextdark2.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark2 = ""}
+    var headingendreplacetextdark2 = headingreplacetextdark2.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark2 = "";}
     if (this.properties.tab3title !=undefined){
       var headingreplacetextdark3 = this.properties.tab3title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-      var headingendreplacetextdark3 = headingreplacetextdark3.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark3 = ""}
+      var headingendreplacetextdark3 = headingreplacetextdark3.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark3 = "";}
       if (this.properties.tab4title !=undefined){
         var headingreplacetextdark4 = this.properties.tab4title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-        var headingendreplacetextdark4 = headingreplacetextdark4.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark4 = ""}
+        var headingendreplacetextdark4 = headingreplacetextdark4.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark4 = "";}
         if (this.properties.tab5title !=undefined){
           var headingreplacetextdark5 = this.properties.tab5title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-          var headingendreplacetextdark5 = headingreplacetextdark5.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark5 = ""}
+          var headingendreplacetextdark5 = headingreplacetextdark5.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark5 = "";}
           if (this.properties.tab6title !=undefined){
             var headingreplacetextdark6 = this.properties.tab6title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertextdark+'">');
-            var headingendreplacetextdark6 = headingreplacetextdark6.replace("]","</span>").replace("|","</br>")} else{headingendreplacetextdark6 = ""}
+            var headingendreplacetextdark6 = headingreplacetextdark6.replace("]","</span>").replace("|","</br>");} else{headingendreplacetextdark6 = "";}
 
 if (this.properties.tab2title !=undefined){
   var headingreplacetext2 = this.properties.tab2title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-  var headingendreplacetext2 = headingreplacetext2.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext2 = ""}
+  var headingendreplacetext2 = headingreplacetext2.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext2 = "";}
 
   if (this.properties.tab3title !=undefined){
     var headingreplacetext3= this.properties.tab3title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-    var headingendreplacetext3 = headingreplacetext3.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext3 = ""}
+    var headingendreplacetext3 = headingreplacetext3.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext3 = "";}
 
     if (this.properties.tab4title !=undefined){
       var headingreplacetext4= this.properties.tab4title.replace('[','<span style="'+mina+' font-size:50px;position:relative;color:'+headertext+'">');
-      var headingendreplacetext4 = headingreplacetext4.replace("]","</span>").replace("|","</br>")} else{headingendreplacetext4 = ""}
+      var headingendreplacetext4 = headingreplacetext4.replace("]","</span>").replace("|","</br>");} else{headingendreplacetext4 = "";}
 
 
 var image1;
@@ -159,12 +165,12 @@ var image3;
 var image4;
 var image5;
 var image6;
-if(this.properties.filePickerResult1==undefined){image1 = ""} else {image1 = this.properties.filePickerResult1.fileAbsoluteUrl}
-if(this.properties.filePickerResult2==undefined){image2 = ""} else {image2 = this.properties.filePickerResult2.fileAbsoluteUrl}
-if(this.properties.filePickerResult3==undefined){image3 = ""} else {image3 = this.properties.filePickerResult3.fileAbsoluteUrl}
-if(this.properties.filePickerResult4==undefined){image4 = ""} else {image4 = this.properties.filePickerResult4.fileAbsoluteUrl}
-if(this.properties.filePickerResult5==undefined){image5 = ""} else {image5 = this.properties.filePickerResult5.fileAbsoluteUrl}
-if(this.properties.filePickerResult6==undefined){image6 = ""} else {image6 = this.properties.filePickerResult6.fileAbsoluteUrl}
+if(this.properties.filePickerResult1==undefined){image1 = "";} else {image1 = this.properties.filePickerResult1.fileAbsoluteUrl;}
+if(this.properties.filePickerResult2==undefined){image2 = "";} else {image2 = this.properties.filePickerResult2.fileAbsoluteUrl;}
+if(this.properties.filePickerResult3==undefined){image3 = "";} else {image3 = this.properties.filePickerResult3.fileAbsoluteUrl;}
+if(this.properties.filePickerResult4==undefined){image4 = "";} else {image4 = this.properties.filePickerResult4.fileAbsoluteUrl;}
+if(this.properties.filePickerResult5==undefined){image5 = "";} else {image5 = this.properties.filePickerResult5.fileAbsoluteUrl;}
+if(this.properties.filePickerResult6==undefined){image6 = "";} else {image6 = this.properties.filePickerResult6.fileAbsoluteUrl;}
 
 var url = this.context.pageContext.web.absoluteUrl;
     $("body")
@@ -295,26 +301,26 @@ var url = this.context.pageContext.web.absoluteUrl;
       background-repeat: no-repeat;
       background-position: right top;
   }
-    </style>`)
-    this.domElement.innerHTML = `<div id="`+uniqueref+`"></div>`
+    </style>`);
+    this.domElement.innerHTML = `<div id="`+uniqueref+`"></div>`;
     sp.setup({
       spfxContext: this.context});
-
+      var content;
   // HERE WE ARE REMOVING THE BRISTOL FONT MARKDOWN FOR THE TAB HEADERS WHICH ALLOWS US TO USE THE SAME PROPERTY PANE ITEM FOR BOTH TAB AND CONTENT TITLE
 
-      if(this.properties.tab1title !=undefined){var strippedtitle1 = this.properties.tab1title.replace("[","").replace("]","").replace("|","")}
-      if(this.properties.tab2title !=undefined){var strippedtitle2 = this.properties.tab2title.replace("[","").replace("]","").replace("|","")}
-      if(this.properties.tab3title !=undefined){var strippedtitle3 = this.properties.tab3title.replace("[","").replace("]","").replace("|","")}
-      if(this.properties.tab4title !=undefined){var strippedtitle4 = this.properties.tab4title.replace("[","").replace("]","").replace("|","")}
-      if(this.properties.tab5title !=undefined){var strippedtitle5 = this.properties.tab5title.replace("[","").replace("]","").replace("|","")}
-      if(this.properties.tab6title !=undefined){var strippedtitle6 = this.properties.tab6title.replace("[","").replace("]","").replace("|","")}
-if(this.properties.type ==undefined){var content = ``}
+      if(this.properties.tab1title !=undefined){var strippedtitle1 = this.properties.tab1title.replace("[","").replace("]","").replace("|","");}
+      if(this.properties.tab2title !=undefined){var strippedtitle2 = this.properties.tab2title.replace("[","").replace("]","").replace("|","");}
+      if(this.properties.tab3title !=undefined){var strippedtitle3 = this.properties.tab3title.replace("[","").replace("]","").replace("|","");}
+      if(this.properties.tab4title !=undefined){var strippedtitle4 = this.properties.tab4title.replace("[","").replace("]","").replace("|","");}
+      if(this.properties.tab5title !=undefined){var strippedtitle5 = this.properties.tab5title.replace("[","").replace("]","").replace("|","");}
+      if(this.properties.tab6title !=undefined){var strippedtitle6 = this.properties.tab6title.replace("[","").replace("]","").replace("|","");}
+if(this.properties.type ==undefined){content = ``;}
 else if(this.properties.type =="layers"){
-  var content = `
+  content = `
 <div id="layer1`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div   class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-flex-last@s uk-card-media-right uk-cover-container">
-  <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
+  <div style="height:450px;background-position:`+this.properties.tab1position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -333,7 +339,7 @@ else if(this.properties.type =="layers"){
 <div id="layer2`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-card-media-left uk-cover-container">
-      <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
+      <div style="height:450px;background-position:`+this.properties.tab2position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -352,7 +358,7 @@ else if(this.properties.type =="layers"){
 <div id="layer3`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div   class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-flex-last@s uk-card-media-right uk-cover-container">
-  <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
+  <div style="height:450px;background-position:`+this.properties.tab3position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -371,7 +377,7 @@ else if(this.properties.type =="layers"){
 <div id="layer4`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-card-media-left uk-cover-container">
-      <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
+      <div style="height:450px;background-position:`+this.properties.tab4position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -392,7 +398,7 @@ else if(this.properties.type =="layers"){
 <div id="layer5`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div   class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-flex-last@s uk-card-media-right uk-cover-container">
-  <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
+  <div style="height:450px;background-position:`+this.properties.tab5position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -411,7 +417,7 @@ else if(this.properties.type =="layers"){
 <div id="layer6`+uniqueref+`" style="max-height:450px;overflow:hidden">
 <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
   <div style="max-height:450px" class="uk-card-media-left uk-cover-container">
-      <div style="height:450px" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
+      <div style="height:450px;background-position:`+this.properties.tab6position+`" class=" uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
       <canvas width="600" height="500"></canvas>
   </div>
   <div>
@@ -426,12 +432,12 @@ else if(this.properties.type =="layers"){
       </div>
   </div>
 </div></div>
-`}
+`;}
 else if(this.properties.type =="tabs"){
 
   // HERE WE ARE ADDING THE STRIPPED TITLES FROM THE VARIABLES ABOVE
 
-  var content = `
+  content = `
     <ul style="width:100%;`+mainfont+`;text-transform:none !important" class="uk-subnav uk-subnav-pill  uk-child-width-expand" uk-switcher="animation: uk-animation-fade">
     <li id="tabmenu1`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#">`+strippedtitle1+`</a></li>
     <li id="tabmenu2`+uniqueref+`"><a style="`+mainfont+`;text-transform:none !important;font-size:20px" href="#" >`+strippedtitle2+`</a></li>
@@ -444,9 +450,10 @@ else if(this.properties.type =="tabs"){
 <ul style="width:100%; margin-bottom:-20px !important" class="tabsuk-switcher uk-switcher uk-margin">
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image1+`" alt="">
+
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab1position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class="uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1 >`+headingendreplacetext+`</h1>
@@ -462,9 +469,9 @@ else if(this.properties.type =="tabs"){
     </li>
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image2+`" alt="">
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab2position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class="uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext2+`</h1>
@@ -483,9 +490,9 @@ else if(this.properties.type =="tabs"){
 
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image3+`" alt="">
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab3position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
     <div class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class="uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext3+`</h1>
@@ -505,9 +512,9 @@ else if(this.properties.type =="tabs"){
 
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image4+`" alt="">
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab4position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class="uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext4+`</h1>
@@ -524,9 +531,9 @@ else if(this.properties.type =="tabs"){
 
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image5+`" alt="">
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab5position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class=" uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext5+`</h1>
@@ -543,9 +550,9 @@ else if(this.properties.type =="tabs"){
 
     <li style="width:100%" >
     <div class="uk-inline">
-    <img style="width:100vw" src="`+image6+`" alt="">
+    <div style="width:100vw; height:800px; background-position:`+this.properties.tab6position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-left uk-light">
+    <div class="uk-position-top-left uk-light">
     <div class="leftpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext6+`</h1>
@@ -561,9 +568,9 @@ else if(this.properties.type =="tabs"){
     </li>
 
 </ul>
-    `}
+    `;}
 
-   else if(this.properties.type =="slides"){var content = `
+   else if(this.properties.type =="slides"){content = `
    <div style="background:`+colorstyle+`;padding:40px;padding-top:80px;padding-bottom:80px">
    <div uk-slideshow="animation: push">
 
@@ -571,7 +578,7 @@ else if(this.properties.type =="tabs"){
 
        <ul class="uk-slideshow-items">
            <li id="slide1`+uniqueref+`">
-               <img src="`+image1+`" alt="" uk-cover>
+           <div style="width:100vw; height:800px; background-position:`+this.properties.tab1position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
                <div class="uk-overlay-default uk-position-cover ">
                <div class="rightpnel uk-position-top-right" style="width:50%">
                <div style="margin-top: 20%;margin-left: 10%;">
@@ -583,7 +590,7 @@ else if(this.properties.type =="tabs"){
            </li>
 
            <li id="slide2`+uniqueref+`">
-           <img src="`+image2+`" alt="" uk-cover>
+           <div style="width:100vw; height:800px; background-position:`+this.properties.tab2position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
            <div class="uk-overlay-default uk-position-cover ">
            <div class="rightpnel uk-position-top-right" style="width:50%">
            <div style="margin-top: 20%;margin-left: 10%;">
@@ -596,7 +603,7 @@ else if(this.properties.type =="tabs"){
 
 
        <li id="slide3`+uniqueref+`">
-       <img src="`+image3+`" alt="" uk-cover>
+       <div style="width:100vw; height:800px; background-position:`+this.properties.tab3position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
        <div class="uk-overlay-default uk-position-cover ">
        <div class="rightpnel uk-position-top-right" style="width:50%">
        <div style="margin-top: 20%;margin-left: 10%;">
@@ -610,7 +617,7 @@ else if(this.properties.type =="tabs"){
 
 
    <li id="slide4`+uniqueref+`">
-   <img src="`+image4+`" alt="" uk-cover>
+   <div style="width:100vw; height:800px; background-position:`+this.properties.tab4position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
    <div class="uk-overlay-default uk-position-cover ">
    <div class="rightpnel uk-position-top-right" style="width:50%">
    <div style="margin-top: 20%;margin-left: 10%;">
@@ -622,7 +629,7 @@ else if(this.properties.type =="tabs"){
 </li>
 
 <li id="slide5`+uniqueref+`">
-<img src="`+image5+`" alt="" uk-cover>
+<div style="width:100vw; height:800px; background-position:`+this.properties.tab5position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
 <div class="uk-overlay-default uk-position-cover ">
 <div class="rightpnel uk-position-top-right" style="width:50%">
 <div style="margin-top: 20%;margin-left: 10%;">
@@ -634,7 +641,7 @@ else if(this.properties.type =="tabs"){
 </li>
 
 <li id="slide6`+uniqueref+`">
-<img src="`+image6+`" alt="" uk-cover>
+<div style="width:100vw; height:800px; background-position:`+this.properties.tab6position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
 <div class="uk-overlay-default uk-position-cover ">
 <div class="rightpnel uk-position-top-right" style="width:50%">
 <div style="margin-top: 20%;margin-left: 10%;">
@@ -657,9 +664,9 @@ else if(this.properties.type =="tabs"){
 
 </div></div>
 
-   `}
+   `;}
 
-   else if(this.properties.type =="slidesabove"){var content = `
+   else if(this.properties.type =="slidesabove"){content = `
    <div style="background:`+colorstyle+`;padding:40px;padding-top:80px;padding-bottom:80px">
    <div uk-slideshow>
 
@@ -678,7 +685,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image1+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw;height:800px;background-position:`+this.properties.tab1position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
+            </div>
 
 
 
@@ -694,7 +703,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image2+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw;height:800px; background-position:`+this.properties.tab2position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
+            </div>
 
 
 
@@ -711,7 +722,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image3+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw;height:800px;background-position:`+this.properties.tab3position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
+            </div>
 
 
 
@@ -729,7 +742,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image4+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw;height:800px; background-position:`+this.properties.tab4position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
+            </div>
 
 
 
@@ -746,7 +761,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image5+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw; width:100vw;height:800px;background-position:`+this.properties.tab5position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
+            </div>
 
 
 
@@ -764,7 +781,9 @@ else if(this.properties.type =="tabs"){
           </div>
           </br>
 
-            <div style="height:600px">  <img src="`+image6+`" style="width:100vw" alt=""></div>
+            <div style="height:600px">
+            <div style="width:100vw;height:800px; background-position:`+this.properties.tab1position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
+            </div>
 
 
 
@@ -781,7 +800,7 @@ else if(this.properties.type =="tabs"){
 
 </div></div>
 
-   `};
+   `;}
 jQuery(attach).append(content);
 
 
@@ -957,7 +976,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab1position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
@@ -993,7 +1036,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab2position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
@@ -1029,7 +1096,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab3position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
@@ -1065,7 +1156,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab4position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
@@ -1101,7 +1216,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab5position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
@@ -1137,7 +1276,31 @@ var lid6 = "#layer6"+uniqueref;
                   hideLocalUploadTab: true,
                   storeLastActiveTab: true,
                   hideOneDriveTab: true,
-              })
+              }),
+              PropertyPaneChoiceGroup('tab6position', {
+                label: "Image position",
+                options: [
+                  { key: 'top', text: 'Top',
+                  imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+                  imageSize: { width: 36, height: 36 },
+                  selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+                },
+
+                 { key: 'bottom', text: 'Bottom',
+                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+                   imageSize: { width: 36, height: 36 },
+                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+                 },
+                 { key: 'center', text: 'Center',
+                 imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+                 imageSize: { width: 36, height: 36 },
+                 selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+               }
+
+
+
+               ]
+             }),
               ],
 
 
