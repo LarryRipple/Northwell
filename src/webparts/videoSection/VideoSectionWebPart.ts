@@ -51,6 +51,7 @@ export interface IVideoSectionWebPartProps {
 
 export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSectionWebPartProps> {
   public render(): void {
+    var colorstyle =$("#pagecolor").text();
     const uniqueref = Math.floor(Math.random() * 90000) + 10000;
     const attach = "#" + uniqueref;
     const width = window.screen.availWidth;
@@ -63,46 +64,46 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     var mina = `font-family: 'Bristol' !important;`;
     var mainfont = `font-family: 'thesans' !important;`;
 
-    if (this.properties.color == undefined) {
+    if (colorstyle == undefined) {
       slidenav = "#7dcdee";
-    } else if (this.properties.color == "#009adf") {
+    } else if (colorstyle == "#009adf") {
       slidenav = "#7dcdee";
-    } else if (this.properties.color == "#5c0b8a") {
+    } else if (colorstyle == "#5c0b8a") {
       slidenav = "#c38ebe";
     }
-    contentsplit = "background:color:" + this.properties.color;
+    contentsplit = "background:color:" + colorstyle;
 
 
 
-    if (this.properties.color == undefined) {
+    if (colorstyle == undefined) {
       headertext = "#6dc3df";
-    } else if (this.properties.color == "#009adf") {
+    } else if (colorstyle == "#009adf") {
       headertext = "#6dc3df";
     } else {
       headertext = "#bd83ca";
     }
 
-    if (this.properties.color == undefined) {
+    if (colorstyle == undefined) {
       headertextdark = "#004f9c";
-    } else if (this.properties.color == "#009adf") {
+    } else if (colorstyle == "#009adf") {
       headertextdark = "#004f9c";
     } else {
       headertextdark = "#60257e";
     }
 
-    if (this.properties.color == undefined) {
+    if (colorstyle == undefined) {
       headerreptext = "#003ca5";
-    } else if (this.properties.color == "#009adf") {
+    } else if (colorstyle == "#009adf") {
       headerreptext = "#003ca5";
-    } else if (this.properties.color == "#5c0b8a") {
+    } else if (colorstyle== "#5c0b8a") {
       headerreptext = "#9e29b5";
     }
 
-    if (this.properties.color == undefined) {
+    if (colorstyle == undefined) {
       overlaycolor = "rgba(0,60,165,.6)";
-    } else if (this.properties.color == "#009adf") {
+    } else if (colorstyle == "#009adf") {
       overlaycolor = "rgba(0,60,165,.6)";
-    } else if (this.properties.color == "#5c0b8a") {
+    } else if (colorstyle == "#5c0b8a") {
       overlaycolor = "rgba(92,11,138,.6)";
     }
     if (this.properties.title != undefined) {
@@ -184,7 +185,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
         left: 1px;}
         .uk-subnav-pill>.uk-active>a {
           background-color: ` +
-        this.properties.color +
+          colorstyle +
         ` !important;
           color: #fff !important;
       }
@@ -201,7 +202,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     }
       .uk-subnav-pill>*>a:active, .uk-subnav-pill>*>a:focus, .uk-subnav-pill>*>a:hover {
         background-color: ` +
-        this.properties.color +
+        colorstyle +
         ` !important;
         color: #fff !important;
 
@@ -210,7 +211,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       padding: 5px 10px;
       background: 0 0;
       color: ` +
-        this.properties.color +
+      colorstyle +
         ` !important;font-weight:normal
     }
     .uk-dotnav>*>* {
@@ -365,19 +366,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
                   label: "Body Text",
                   multiline: true,
                 }),
-                PropertyPaneDropdown("color", {
-                  label: "Theme color",
-                  options: [
-                    {
-                      key: "#009adf",
-                      text: "Blue",
-                    },
-                    {
-                      key: "#5c0b8a",
-                      text: "Purple",
-                    },
-                  ],
-                }),
+
                 PropertyPaneTextField("actiontext", {
                   label: "Call to action text",
                 }),

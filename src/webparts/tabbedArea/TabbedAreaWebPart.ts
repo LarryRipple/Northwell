@@ -918,18 +918,7 @@ var lid6 = "#layer6"+uniqueref;
                   value: this.properties.sliderWithCallout,
                   debounce: 10
                 }),
-                PropertyPaneDropdown('color', {
-                  label: "Theme color",
-                  options: [
-                    {
-                      key: "#009adf",
-                      text: "Blue"
-                    },
-                    {
-                      key: "#5c0b8a",
-                      text: "Purple"
-                    }]
-                }),
+
                 PropertyPaneDropdown('display', {
                   label: "Display type (for tabs only)",
                   options: [
