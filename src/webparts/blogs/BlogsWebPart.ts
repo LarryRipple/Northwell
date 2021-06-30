@@ -61,15 +61,15 @@ if(this.properties.sliderWithCallout ==4){imgh ="150";}
 var itemstoshow;
 if(this.properties.items ==undefined){itemstoshow =2;} else
 {itemstoshow= +this.properties.items;}
-    var items =  sp.web.lists.getByTitle("Site Pages").items.filter(filter).top(itemstoshow).get().then(b => {
-
+    var items =  sp.web.lists.getByTitle("Site Pages").items.select("Title", "FileRef", "BannerImageUrl", "Description", "OData__TopicHeader").filter(filter).top(itemstoshow).get().then(b => {
+console.log(b)
 b.forEach(element => {
   var url = this.context.pageContext.web.absoluteUrl;
   $(attach).append(
     `<div>
     <div class="uk-card uk-card-default">
         <div class="uk-card-media-top">
-            <a href="`+url+`/sitepages/`+element.Title+`.aspx"> <img style="width:100%; height:`+imgh+`px" src="`+element.BannerImageUrl.Url +`" alt=""></a>
+            <a href="`+element.FileRef+`"> <img style="width:100%; height:`+imgh+`px" src="`+element.BannerImageUrl.Url +`" alt=""></a>
         </div>
         <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
             <h3 style="color:`+colorstyle+`;font-size: 25px;
@@ -79,7 +79,7 @@ b.forEach(element => {
             <p style="max-height: 75px;height:75px;
             overflow: hidden;" class="ce-paragraph">`+element.Description +`</p>
             <p>Tags: `+element.OData__TopicHeader +`</p>
-            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+url+`/sitepages/`+element.Title+`.aspx"> <i style="" class="triangle"></i>Read more</a>
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+element.FileRef+`"> <i style="" class="triangle"></i>Read more</a>
         </div>
 
     </div>

@@ -57,6 +57,14 @@
           "manifest": "./src/webparts/pageHeader/PageHeaderWebPart.manifest.json"
         }
       ]
+    },
+    "title-section-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/titleSection/TitleSectionWebPart.js",
+          "manifest": "./src/webparts/titleSection/TitleSectionWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -68,6 +76,7 @@
     "FaQsWebPartStrings": "lib/webparts/faQs/loc/{locale}.js",
     "BlogsWebPartStrings": "lib/webparts/blogs/loc/{locale}.js",
     "OurTeamWebPartStrings": "lib/webparts/ourTeam/loc/{locale}.js",
-    "PageHeaderWebPartStrings": "lib/webparts/pageHeader/loc/{locale}.js"
+    "PageHeaderWebPartStrings": "lib/webparts/pageHeader/loc/{locale}.js",
+    "TitleSectionWebPartStrings": "lib/webparts/titleSection/loc/{locale}.js"
   }
 }

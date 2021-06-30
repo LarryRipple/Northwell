@@ -32,20 +32,14 @@ var url = this.context.pageContext.web.absoluteUrl;
 
 
     var colorstyle = $("#pagecolor").text();
-    var slidenav;
-    if (colorstyle == undefined) {
-      slidenav = "#007DB8";
-    } else if (colorstyle == "undefined") {
-      slidenav = "#007DB8";
-    } else if (colorstyle == "#009adf") {
+    var slidenav ="#007DB8";
+     if (colorstyle == "#009adf") {
       slidenav = "#007DB8";
     } else if (colorstyle == "#5c0b8a") {
       slidenav = "#9e29b5";
     }
-    var slidenav1;
-    if (colorstyle == "undefined") {
-      slidenav1 = "#007DB8";
-    } else if (colorstyle == "#009adf") {
+    let slidenav1 = "#007DB8";
+    if (colorstyle == "#009adf") {
       slidenav1 = "#007DB8";
     } else if (colorstyle == "#5c0b8a") {
       slidenav1 = "#5c0b8a";
@@ -126,34 +120,8 @@ $("#BRANDING").remove();
 
 /* CALL TO ACTION STYLES FOR THE OOTB TEXT EDITING WEBPART */
 
-.cke_editable a {
-  font-family: 'thesans';
-  color:` +
-        slidenav +
-        `;
-  font-size: 15px;
-}
-.cke_editable a::before{
-  content:"";
- width: 0;
- height: 0;
- border: 0 solid transparent;
- border-left-width: 22px;
- border-right-width: 1px;
- border-top: 18px solid ` +
-        slidenav +
-        ` !important;
- top: 19px;
-   position: relative;
-   left: -6px;
-}
-.cke_editable a {
-  font-family: 'thesans';
-  color: ` +
-        slidenav +
-        ` !important;
-  font-size: 15px;
-}
+
+
 
 
    </style>`);

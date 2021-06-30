@@ -139,12 +139,12 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     $("body").append(
       `<style id="createvideo" type="text/css">
 
-    [class*=uk-position-bottom], [class*=uk-position-center], [class*=uk-position-left], [class*=uk-position-right], [class*=uk-position-top] {
+      .uk-position-top-right1 {
       position: absolute!important;
       max-width: 50%;
       background: ` +
         headertextdark +
-        `;
+        ` !important;
       height: 100%;
   }
     .uk-slideshow-items>*{max-height:800px}
@@ -287,13 +287,13 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     this.domElement.innerHTML =
       `
     <div class="uk-inline">
-    <img src="` +
+    <img style="width:100vw" src="` +
       fileurl +
       `" alt="">
     <div style="background:` +
       overlaycolor +
       `" class="uk-overlay-primary uk-position-cover"></div>
-    <div class="uk-overlay uk-position-top-right uk-light">
+    <div class="uk-overlay uk-position-top-right uk-position-top-right1 uk-light">
     <div class="rightpanel">
     <div style="margin-top:20%;margin-left:20%">
     <h1>` +

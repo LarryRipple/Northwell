@@ -201,7 +201,7 @@ var url = this.context.pageContext.web.absoluteUrl;
         position: relative;
         left: -6px;}
 
-    .leftpanel{width:`+width/2+`px !important;`+ contentsplit+`; position: absolute;height:780px;
+    .leftpanel{width:`+width/2+`px !important; position: absolute;height:780px;
     top: 1px;
     width: 300px;
     left: 1px;}
@@ -302,7 +302,12 @@ var url = this.context.pageContext.web.absoluteUrl;
       background-position: right top;
   }
     </style>`);
-    this.domElement.innerHTML = `<div id="`+uniqueref+`"></div>`;
+    var blogun = "blog"+uniqueref
+    this.domElement.innerHTML = `<div id="`+uniqueref+`"></div>
+    <div id="`+blogun+`" class="uk-child-width-1-3@m uk-grid-match" uk-grid>
+
+
+    </div>`;
     sp.setup({
       spfxContext: this.context});
       var content;
@@ -346,7 +351,7 @@ else if(this.properties.type =="layers"){
       <div class="uk-card-body" style="height:450px;background-color:#fff">
       <div class="" style="width:70%;position:relative;left:30px">
 
-      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;color:white !important">`+headingendreplacetextdark2+`</h1>
+      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;">`+headingendreplacetextdark2+`</h1>
           <div class="bodytext" style="width:100%;color:#53565a">`+this.properties.tab2text+`</div>
           <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink2+`"> <i style="" class="triangle"></i>`+this.properties.actiontext2+`</a>
 
@@ -384,7 +389,7 @@ else if(this.properties.type =="layers"){
       <div class="uk-card-body" style="height:450px;background-color:#fff">
       <div class="" style="width:70%;position:relative;left:30px">
 
-      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;color:white !important">`+headingendreplacetextdark4+`</h1>
+      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;">`+headingendreplacetextdark4+`</h1>
       <div class="bodytext" style="width:100%;color:#53565a">`+this.properties.tab4text+`</div>
       <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink4+`"> <i style="" class="triangle"></i>`+this.properties.actiontext4+`</a>
 
@@ -424,7 +429,7 @@ else if(this.properties.type =="layers"){
       <div class="uk-card-body" style="height:450px;background-color:#fff">
       <div class="" style="width:70%;position:relative;left:30px">
 
-      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;color:white !important">`+headingendreplacetextdark6+`</h1>
+      <h1 style="color:`+headertextdark+`; font-family: 'thesans' !important;">`+headingendreplacetextdark6+`</h1>
           <div class="bodytext" style="width:100%;color:#53565a">`+this.properties.tab6text+`</div>
           <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink6+`"> <i style="" class="triangle"></i>`+this.properties.actiontext6+`</a>
 
@@ -454,7 +459,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab1position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image1+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class="uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1 >`+headingendreplacetext+`</h1>
         <div class="bodytext">`+this.properties.tab1text+`</div>
@@ -472,7 +477,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab2position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image2+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class="uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext2+`</h1>
         <div class="bodytext">`+this.properties.tab2text+`</div>
@@ -493,7 +498,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab3position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image3+`" uk-img></div>
     <div class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class="uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext3+`</h1>
         <div class="bodytext">`+this.properties.tab3text+`</div>
@@ -515,7 +520,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab4position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image4+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class="uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext4+`</h1>
         <div class="bodytext">`+this.properties.tab4text+`</div>
@@ -534,7 +539,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab5position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image5+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class=" uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext5+`</h1>
         <div class="bodytext">`+this.properties.tab5text+`</div>
@@ -553,7 +558,7 @@ else if(this.properties.type =="tabs"){
     <div style="width:100vw; height:800px; background-position:`+this.properties.tab6position+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+image6+`" uk-img></div>
     <div  class="uk-overlay-primary `+uniqueref+`uk-overlay-primary uk-position-cover"></div>
     <div class="uk-position-top-left uk-light">
-    <div class="leftpanel">
+    <div class="leftpanel" style="`+contentsplit+`">
     <div style="margin-top:20%;margin-left:20%">
     <h1>`+headingendreplacetext6+`</h1>
         <div class="bodytext">`+this.properties.tab6text+`</div>
@@ -801,6 +806,138 @@ else if(this.properties.type =="tabs"){
 </div></div>
 
    `;}
+   else if(this.properties.type =="cards"){
+    content = `
+    <div id="card1`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink+`"> <img style="width:100%;height:250px" src="`+image1+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab1text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+
+        </div>
+        </div>
+
+
+<div id="card2`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink2+`"> <img style="width:100%;height:250px" src="`+image2+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext2+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab2text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink2+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+        </div>
+
+        </div>
+
+
+
+<div id="card3`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink3+`"> <img style="width:100%;height:250px" src="`+image3+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext3+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab3text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink3+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+        </div>
+
+        </div>
+
+
+
+
+<div id="card4`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink4+`"> <img style="width:100%;height:250px" src="`+image4+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext4+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab4text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink4+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+        </div>
+
+        </div>
+
+
+
+
+
+<div id="card5`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink5+`"> <img style="width:100%;height:250px" src="`+image5+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext5+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab2text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink5+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+        </div>
+
+        </div>
+
+
+
+
+<div id="card6`+uniqueref+`">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-media-top">
+            <a href="`+this.properties.actionlink6+`"> <img style="width:100%;height:250px" src="`+image6+`" alt=""></a>
+        </div>
+        <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
+            <h3 style="color:`+colorstyle+`;font-size: 25px;
+            line-height: 30px;
+            height: 60px;
+            overflow: hidden;" class="uk-card-title">`+headingendreplacetext6+`</h3>
+            <p style="max-height: 75px;height:75px;
+            overflow: hidden;" class="ce-paragraph">`+this.properties.tab6text+`</p>
+
+            <a style="width:85%;margin:auto;position:relative;top:7px;font-size:12pt" class="cta"  href="`+this.properties.actionlink6+`"> <i style="" class="triangle"></i>Read more</a>
+        </div>
+        </div>
+
+        </div>
+<div>
+  `;}
+  var blogref = "#blog"+uniqueref
+  if (this.properties.type=="cards"){jQuery(blogref).append(content);} else
 jQuery(attach).append(content);
 
 
@@ -821,6 +958,11 @@ var lid4 = "#layer4"+uniqueref;
 var lid5 = "#layer5"+uniqueref;
 var lid6 = "#layer6"+uniqueref;
 
+var cid3 = "#card3"+uniqueref;
+var cid4 = "#card4"+uniqueref;
+var cid5 = "#card5"+uniqueref;
+var cid6 = "#card6"+uniqueref;
+
   // HERE WE ARE REMOVING SETTING SECTIONS FROM VIEW IF THE SLIDER IS SET TO EACH OF THE DEFINED SLIDER STEPS
    if(this.properties.sliderWithCallout == undefined){}
    else if (this.properties.sliderWithCallout ==2){
@@ -837,6 +979,10 @@ var lid6 = "#layer6"+uniqueref;
      $(lid4).remove();
      $(lid5).remove();
      $(lid6).remove();
+     $(cid3).remove();
+     $(cid4).remove();
+     $(cid5).remove();
+     $(cid6).remove();
    }
    else if (this.properties.sliderWithCallout ==3){
 
@@ -849,6 +995,9 @@ var lid6 = "#layer6"+uniqueref;
     $(lid4).remove();
     $(lid5).remove();
     $(lid6).remove();
+    $(cid4).remove();
+    $(cid5).remove();
+    $(cid6).remove();
 
    }
    else if (this.properties.sliderWithCallout ==4){
@@ -858,6 +1007,9 @@ var lid6 = "#layer6"+uniqueref;
     $(sid5).remove();
     $(lid6).remove();
     $(lid5).remove();
+    $(cid6).remove();
+    $(cid5).remove();
+
 
 
    }
@@ -866,6 +1018,7 @@ var lid6 = "#layer6"+uniqueref;
     $(id6).remove();
     $(sid6).remove();
     $(lid6).remove();
+    $(cid6).remove();
 
    }
 
@@ -885,6 +1038,7 @@ var lid6 = "#layer6"+uniqueref;
 
               groupName: "Settings",
               groupFields: [
+
                 PropertyPaneDropdown('type', {
                   label: "Section type",
                   options: [
@@ -904,7 +1058,14 @@ var lid6 = "#layer6"+uniqueref;
                     {
                       key: "layers",
                       text: "Split column rows"
-                    }]
+                    }
+                    ,
+
+                    {
+                      key: "cards",
+                      text: "Cards"
+                    }
+                  ]
                 }),
                 PropertyFieldSliderWithCallout('sliderWithCallout', {
 

@@ -150,7 +150,7 @@ li[data-tool*="table"]{display:none}</style>`);
     } else if (this.properties.color == "#5c0b8a") {
       headerreptext = "#5c0b8a";
     }
-    if (this.properties.intro != undefined) {
+    if (this.properties.intro != undefined || this.properties.intro != null || this.properties.intro != "") {
       var headingreplacetext = this.properties.intro.replace(
         "[",
         '<span style="' +
@@ -217,7 +217,7 @@ li[data-tool*="table"]{display:none}</style>`);
       this.properties.actionlink +
       `"> <i  data-item="` +
       this.properties.actiontext +
-      `" class="triangleheader"></i>` +
+      `null" class="triangleheader"></i>` +
       this.properties.actiontext +
       `</a>
             </div>
@@ -406,7 +406,7 @@ li[data-tool*="table"]{display:none}</style>`);
     var url = this.context.pageContext.web.absoluteUrl;
     $("body").append(
       `<style id="pageheader" type="text/css">
-      [data-item*="undefined"]{display:none}
+      [data-item="undefined"], [data-item="null"]{display:none}
 .triangleheader{width: 0;
   height: 0;
   border: 0 solid transparent;
