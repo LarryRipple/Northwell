@@ -24,7 +24,7 @@ export interface IOurTeamWebPartProps {
 export default class OurTeamWebPart extends BaseClientSideWebPart<IOurTeamWebPartProps> {
 
   public render(): void {
-    this.domElement.innerHTML = `<div id="bios" class="uk-child-width-1-3@m" uk-grid-match" uk-grid></div>`;
+    this.domElement.innerHTML = `<div id="bios" class="uk-child-width-1-2@m" uk-grid-match"  uk-grid="parallax: 550"></div>`;
     const uniqueref = Math.floor(Math.random()*90000) + 10000;
     const attach = "#"+uniqueref;
     var colorstyle = $("#pagecolor").text();
@@ -55,7 +55,7 @@ var elementhtml = `
 <div>
     <div class="uk-card uk-card-default">
         <div class="uk-card-media-top">
-            <a href="`+element.FileRef+`"> <img style="width:100%; height:250px" src="`+element.FileRef +`" alt=""></a>
+            <a href="`+element.FileRef+`"> <img style="width:100%;" src="`+element.FileRef +`" alt=""></a>
         </div>
         <div class="uk-card-body cardhover" style="border-bottom:4px solid `+colorstyle+`">
             <h3 style="color:`+colorstyle+`;font-size: 25px;
