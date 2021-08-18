@@ -95,6 +95,7 @@ li[data-tool*="table"]{display:none}</style>`);
     sp.setup({
       spfxContext: this.context,
     });
+
     var headerreptext1;
     if (this.properties.color == undefined) {
       headerreptext1 = "#6dc3df";

@@ -9,7 +9,7 @@
   },
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://devripple.sharepoint.com/sites/Northwell/_layouts/workbench.aspx",
+      "pageUrl": "https://siliconreef.sharepoint.com/sites/Northwel/_layouts/workbench.aspx",
       "customActions": {
         "151a0eaf-d737-4eb9-9e60-447cf085d89f": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -20,7 +20,7 @@
       }
     },
     "branding": {
-      "pageUrl": "https://devripple.sharepoint.com/sites/Northwell/_layouts/workbench.aspx",
+      "pageUrl": "https://siliconreef.sharepoint.com/sites/Northwel/_layouts/workbench.aspx",
       "customActions": {
         "151a0eaf-d737-4eb9-9e60-447cf085d89f": {
           "location": "ClientSideExtension.ApplicationCustomizer",
