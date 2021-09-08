@@ -51,7 +51,7 @@ export interface IVideoSectionWebPartProps {
 
 export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSectionWebPartProps> {
   public render(): void {
-    var colorstyle =$("#pagecolor").text();
+    var colorstyle = $("#pagecolor").text();
     const uniqueref = Math.floor(Math.random() * 90000) + 10000;
     const attach = "#" + uniqueref;
     const width = window.screen.availWidth;
@@ -95,7 +95,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       headerreptext = "#003ca5";
     } else if (colorstyle == "#009adf") {
       headerreptext = "#003ca5";
-    } else if (colorstyle== "#5c0b8a") {
+    } else if (colorstyle == "#5c0b8a") {
       headerreptext = "#9e29b5";
     }
 
@@ -110,10 +110,10 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       var headingreplacetext = this.properties.title.replace(
         "[",
         '<span style="' +
-          mina +
-          " font-size:50px;position:relative;color:" +
-          headertext +
-          '">'
+        mina +
+        " font-size:50px;position:relative;color:" +
+        headertext +
+        '">'
       );
       var headingendreplacetext = headingreplacetext
         .replace("]", "</span>")
@@ -125,10 +125,10 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       var headingreplacetextdark = this.properties.title.replace(
         "[",
         '<span style="' +
-          mina +
-          " font-size:50px;position:relative;color:" +
-          headertextdark +
-          '">'
+        mina +
+        " font-size:50px;position:relative;color:" +
+        headertextdark +
+        '">'
       );
       var headingendreplacetextdark = headingreplacetextdark
         .replace("]", "</span>")
@@ -143,8 +143,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       position: absolute!important;
       max-width: 50%;
       background: ` +
-        headertextdark +
-        ` !important;
+      headertextdark +
+      ` !important;
       height: 100%;
   }
     .uk-slideshow-items>*{max-height:800px}
@@ -157,8 +157,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       border-left-width: 22px;
       border-right-width: 1px;
       border-top: 18px solid ` +
-        headertext +
-        `;
+      headertext +
+      `;
       top: 19px;
         position: relative;
         left: -6px;}
@@ -169,24 +169,24 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
           border-left-width: 22px;
           border-right-width: 1px;
           border-top: 18px solid ` +
-        headertextdark +
-        `;
+      headertextdark +
+      `;
           top: 19px;
             position: relative;
             left: -6px;}
 
         .leftpanel{width:` +
-        width / 2 +
-        `px !important;` +
-        contentsplit +
-        `; position: absolute;height:780px;
+      width / 2 +
+      `px !important;` +
+      contentsplit +
+      `; position: absolute;height:780px;
         top: 1px;
         width: 300px;
         left: 1px;}
         .uk-subnav-pill>.uk-active>a {
           background-color: ` +
-          colorstyle +
-        ` !important;
+      colorstyle +
+      ` !important;
           color: #fff !important;
       }
        video {
@@ -202,8 +202,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     }
       .uk-subnav-pill>*>a:active, .uk-subnav-pill>*>a:focus, .uk-subnav-pill>*>a:hover {
         background-color: ` +
-        colorstyle +
-        ` !important;
+      colorstyle +
+      ` !important;
         color: #fff !important;
 
     }
@@ -212,7 +212,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       background: 0 0;
       color: ` +
       colorstyle +
-        ` !important;font-weight:normal
+      ` !important;font-weight:normal
     }
     .uk-dotnav>*>* {
       display: block;
@@ -233,8 +233,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       color: white;
       right: -55px;
       background:` +
-        slidenav +
-        `;
+      slidenav +
+      `;
       padding: 10px;
 
       padding-left: 25px;
@@ -244,8 +244,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       color: white;
       left: -55px;
       background: ` +
-        slidenav +
-        `;
+      slidenav +
+      `;
       padding: 10px;
 
       padding-left: 25px;
@@ -253,8 +253,8 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
     }
     .uk-dotnav>.uk-active>* {
       background-color: ` +
-        slidenav +
-        `;
+      slidenav +
+      `;
       border-color: transparent;
     }
     .uk-subnav>* {
@@ -271,11 +271,11 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
       left: 20px;
     }
         .cta{color:` +
-        headertext +
-        ` !important; font-family: 'thesans';}
+      headertext +
+      ` !important; font-family: 'thesans';}
         .ctadark{color:` +
-        headertextdark +
-        ` !important; font-family: 'thesans';}
+      headertextdark +
+      ` !important; font-family: 'thesans';}
         </style>`
     );
     var fileurl;
@@ -336,7 +336,7 @@ export default class VideoSectionWebPart extends BaseClientSideWebPart<IVideoSec
 
               groupFields: [
                 PropertyFieldFilePicker("filePicker", {
-                  context: this.context,
+                  context: this.context as any,
                   filePickerResult: this.properties.filePickerResult,
                   onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
                   properties: this.properties,

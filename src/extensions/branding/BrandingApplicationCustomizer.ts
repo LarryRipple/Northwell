@@ -28,12 +28,12 @@ export default class BrandingApplicationCustomizer
   @override
   public onInit(): Promise<void> {
 
-var url = this.context.pageContext.web.absoluteUrl;
+    var url = this.context.pageContext.web.absoluteUrl;
 
 
     var colorstyle = $("#pagecolor").text();
-    var slidenav ="#007DB8";
-     if (colorstyle == "#009adf") {
+    var slidenav = "#007DB8";
+    if (colorstyle == "#009adf") {
       slidenav = "#007DB8";
     } else if (colorstyle == "#5c0b8a") {
       slidenav = "#9e29b5";
@@ -45,28 +45,28 @@ var url = this.context.pageContext.web.absoluteUrl;
       slidenav1 = "#5c0b8a";
     }
 
-$("#BRANDING").remove();
+    $("#BRANDING").remove();
     $("body")
-    .append(`<style id="BRANDING" type="text/css">
+      .append(`<style id="BRANDING" type="text/css">
     @font-face {
       font-family: 'Bristol';
-      src: url(`+url+`/SiteAssets/MFTBristol-Regular.ttf);
+      src: url(`+ url + `/SiteAssets/MFTBristol-Regular.ttf);
     }
     @font-face {
       font-family: 'thesans';
-      src: url(`+url+`/SiteAssets/TheSansC5-5_Plain.otf);
+      src: url(`+ url + `/SiteAssets/TheSansC5-5_Plain.otf);
     }
     @font-face {
       font-family: 'thesanssemibold';
-      src: url(`+url+`/SiteAssets/TheSansC5-6_SemiBold.otf);
+      src: url(`+ url + `/SiteAssets/TheSansC5-6_SemiBold.otf);
     }
     @font-face {
       font-family: 'thesansbold';
-      src: url(`+url+`/SiteAssets/TheSansC5-7_Bold.otf);
+      src: url(`+ url + `/SiteAssets/TheSansC5-7_Bold.otf);
     }
     @font-face {
       font-family: 'minion';
-      src: url(`+url+`/SiteAssets/MinionPro-Regular.otf);
+      src: url(`+ url + `/SiteAssets/MinionPro-Regular.otf);
     }
     .ce-paragraph,.cke_editable p{font-family: "thesans";
     font-size: 15px;
@@ -103,9 +103,9 @@ $("#BRANDING").remove();
    }
   }
   /* SET OOTB FOOTER AND HEADER STYLES */
-   footer, button[data-automation-id*="button-web-part"], .wc-header, .o365cs-base .o365sx-button, .wc-message-from-bot .wc-message-content, footer > div, .o365sx-navbar, .o365cs-base .o365sx-appName, .o365cs-base .o365sx-appName:visited, .o365cs-base .o365sx-waffle, .o365cs-base .o365sx-waffle {
-    background: `+slidenav+` !important;
-    background: `+slidenav+` !important;
+   footer, button[data-automation-id*="button-web-part"], .wc-header, .wc-message-from-bot .wc-message-content, footer > div {
+    background: `+ slidenav + ` !important;
+    background: `+ slidenav + ` !important;
 }
 /* SET FONT, SIZE AND COLOR FOR OOTB TEXT EDITING WEBPART CONTENT */
 .cke_editable h2{font-size:40px;font-family: "thesans";color:` +

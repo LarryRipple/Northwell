@@ -1,4 +1,4 @@
-# tabbed-area
+# Northwell - Knowledge Hub
 
 ## Summary
 
@@ -6,9 +6,17 @@ Short summary on functionality and used technologies.
 
 [picture of the solution in action, if possible]
 
+## DevOps
+
+https://siliconreef.visualstudio.com/Northwell
+
+## Environments
+
+Dev: `https://siliconreef.sharepoint.com/sites/Northwell`
+
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.11-green.svg)
+![version](https://img.shields.io/npm/v/@microsoft/sp-component-base/latest?color=green)
 
 ## Applies to
 
@@ -23,22 +31,40 @@ Short summary on functionality and used technologies.
 
 ## Solution
 
-Solution|Author(s)
---------|---------
-folder name | Author details (name, company, twitter alias with link)
+Solution | Author(s)
+-------- | ---------
+Our Team | Nadine St. Pierre 
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.1|March 10, 2021|Update comment
-1.0|January 29, 2021|Initial release
+Version | Date | Comments | Author(s)
+------- | ---- | -------- | ---------
+1.0 | May 26, 2021 | Initial release | Larry Knight
+1.1 | May 26, 2021 | Initial release | Nadine St Pierre
+
+
+
+### Post Deployment Config
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ---
+
+## Versions
+
+- React: 16.8.5
+- node: v10.15.3
+- npm: 6.4.1
+- Typescript version: 3.3.4
+
+### Build and compile
+
+1. npm install
+2. gulp clean
+3. gulp bundle --ship
+4. gulp package-solution --production --ship
 
 ## Minimal Path to Awesome
 

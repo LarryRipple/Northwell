@@ -1,8 +1,8 @@
 import { Version } from '@microsoft/sp-core-library';
 
 import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
+	IPropertyPaneConfiguration,
+	PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
@@ -18,20 +18,20 @@ import * as strings from 'FaQsWebPartStrings';
 import { PropertyFieldCollectionData, CustomCollectionFieldType } from '@pnp/spfx-property-controls/lib/PropertyFieldCollectionData';
 import * as React from 'react';
 export interface IFaQsWebPartProps {
-  description: string;
-  collectionData: any[];
+	description: string;
+	collectionData: any[];
 }
 
 export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps> {
 
-  public render(): void {
-    var colorstyle =$("#pagecolor").text();
-    var slidenav;
-        if(colorstyle =="undefined"){slidenav = "#007DB8";} else
-    if(colorstyle =="#009adf"){slidenav = "#007DB8";} else
-    if(colorstyle =="#5c0b8a"){slidenav = "#5c0b8a";}
-    $("body")
-    .append(`<style id="createfaq" type="text/css">
+	public render(): void {
+		var colorstyle = $("#pagecolor").text();
+		var slidenav;
+		if (colorstyle == "undefined") { slidenav = "#007DB8"; } else
+			if (colorstyle == "#009adf") { slidenav = "#007DB8"; } else
+				if (colorstyle == "#5c0b8a") { slidenav = "#5c0b8a"; }
+		$("body")
+			.append(`<style id="createfaq" type="text/css">
 
     .ce-paragraph,.cke_editable p{font-family: "thesans"; font-size:10pt;line-height: 20pt;
 
@@ -51,7 +51,7 @@ export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps
       font-size: 1.25rem;
       line-height: 1.4;
 
-      overflow: hidden;color:`+slidenav+`;line-height:40px}
+      overflow: hidden;color:`+ slidenav + `;line-height:40px}
 
     .uk-accordion-title:before {
       content: "";
@@ -63,7 +63,7 @@ export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps
       background-repeat: no-repeat;
       background-position: 50% 50%;
       border-radius:100%;
-      border: 1px solid `+slidenav+`
+      border: 1px solid `+ slidenav + `
   }
   .uk-accordion li{
     border-bottom: 1px solid rgba(0,0,0,.04);
@@ -72,81 +72,76 @@ export default class FaQsWebPart extends BaseClientSideWebPart<IFaQsWebPartProps
   }
     </style>`);
 
-    this.domElement.innerHTML = `
+		this.domElement.innerHTML = `
 
 
     <ul id="acc" uk-accordion>
 
 </ul>
      `;
-if(this.properties.collectionData !=undefined){
-     this.properties.collectionData.forEach(item => {
-      $("#acc").append(`
-        <li class="">
-        <a style="color:`+slidenav+`" class="uk-accordion-title" href="#">`+item.title+`</a>
-        <div class="uk-accordion-content cke_editable">
+		if (this.properties.collectionData != undefined) {
+			this.properties.collectionData.forEach(item => {
+				$("#acc").append(`<li class="">
+									<a style="color:`+ slidenav + `" class="uk-accordion-title" href="#">` + item.title + `</a>
+									<div class="uk-accordion-content cke_editable">
+										<p>${item.question ? item.question : ""}</p>
+										<h4>Answer</h4>
+										<p>`+ item.answer + `</p>
+									</div>
+								</li>`);
 
-            <p>`+item.question+`</p>
-
-            <h4>Answer</h4>
-            <p>`+item.answer+`</p>
-        </div>
-    </li>
-
-        `);
-
-      });}
-
-  }
+			});
+		}
+	}
 
 
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyFieldCollectionData("collectionData", {
-                  key: "collectionData",
-                  label: "Create FAQ's",
-                  panelHeader: "FAQ's Creation",
-                  manageBtnLabel: "Manage FAQ's",
-                  value: this.properties.collectionData,
-                  fields: [
+	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+		return {
+			pages: [
+				{
+					header: {
+						description: strings.PropertyPaneDescription
+					},
+					groups: [
+						{
+							groupName: strings.BasicGroupName,
+							groupFields: [
+								PropertyFieldCollectionData("collectionData", {
+									key: "collectionData",
+									label: "Create FAQ's",
+									panelHeader: "FAQ's Creation",
+									manageBtnLabel: "Manage FAQ's",
+									value: this.properties.collectionData,
+									fields: [
 
-                    {
-                      id: "title",
-                      title: "Title",
-                      type: CustomCollectionFieldType.string,
-                      required: true,
+										{
+											id: "title",
+											title: "Title",
+											type: CustomCollectionFieldType.string,
+											required: true,
 
-                    },
-                    {
-                      id: "question",
-                      title: "Question",
-                      type: CustomCollectionFieldType.string
-                    },
-                    {
-                      id: "answer",
-                      title: "Answer",
-                      type: CustomCollectionFieldType.string,
+										},
+										{
+											id: "question",
+											title: "Question",
+											type: CustomCollectionFieldType.string
+										},
+										{
+											id: "answer",
+											title: "Answer",
+											type: CustomCollectionFieldType.string,
 
-                      required: true
-                    }
-                  ],
-                  disabled: false
-                })
-              ]
-            }
-          ]
-        }
-      ]
-    };
-  }
+											required: true
+										}
+									],
+									disabled: false
+								})
+							]
+						}
+					]
+				}
+			]
+		};
+	}
 }

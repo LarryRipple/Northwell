@@ -67,7 +67,19 @@
       ]
     }
   },
-  "externals": {},
+  "externals": {
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-3.6.0.min.js",
+      "globalName": "jQuery"
+    },
+    "semantic": {
+      "path": "https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js",
+      "globalName": "semantic",
+      "globalDependencies": [
+        "jquery"
+      ]
+    }
+  },
   "localizedResources": {
     "TabbedAreaWebPartStrings": "lib/webparts/tabbedArea/loc/{locale}.js",
     "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js",
