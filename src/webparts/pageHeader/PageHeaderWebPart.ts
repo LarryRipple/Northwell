@@ -1,8 +1,8 @@
 import { DisplayMode, Version } from "@microsoft/sp-core-library";
 import {
-  IPropertyPaneConfiguration,
-  PropertyPaneButtonType,
-  PropertyPaneTextField,PropertyPaneChoiceGroup
+	IPropertyPaneConfiguration,
+	PropertyPaneButtonType,
+	PropertyPaneTextField, PropertyPaneChoiceGroup
 } from "@microsoft/sp-property-pane";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 
@@ -11,8 +11,8 @@ import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 import * as strings from "PageHeaderWebPartStrings";
 import {
-  PropertyFieldFilePicker,
-  IFilePickerResult,
+	PropertyFieldFilePicker,
+	IFilePickerResult,
 } from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
 
 import * as $ from "jquery";
@@ -20,46 +20,46 @@ import * as $ from "jquery";
 window["jQuery"] = window["$"] = $;
 
 import {
-  IPropertyPaneDropdownOption,
-  PropertyPaneCheckbox,
-  PropertyPaneDropdown,
+	IPropertyPaneDropdownOption,
+	PropertyPaneCheckbox,
+	PropertyPaneDropdown,
 } from "@microsoft/sp-property-pane";
 
 require("uikit/dist/css/uikit.min.css");
 require("uikit/dist/js/uikit.min.js");
 
 export interface IPageHeaderWebPartProps {
-  description: string;
-  Page: string;
-  multiSelect: string[];
-  filePickerResult: IFilePickerResult;
-  imageposition: string;
-  color: string;
-  actiontext: string;
-  actionlink: string;
-  title: string;
-  intro: string;
-  bodytext: string;
-  htmlCode: string;
-  jsonCode: string;
-  showheader: boolean;
+	description: string;
+	Page: string;
+	multiSelect: string[];
+	filePickerResult: IFilePickerResult;
+	imageposition: string;
+	color: string;
+	actiontext: string;
+	actionlink: string;
+	title: string;
+	intro: string;
+	bodytext: string;
+	htmlCode: string;
+	jsonCode: string;
+	showheader: boolean;
 }
 
 export default class PageHeaderWebPart extends BaseClientSideWebPart<IPageHeaderWebPartProps> {
-  public render(): void {
-    var headdisplay;
-    if (this.properties.showheader == undefined) {
-      headdisplay = "inline";
-    } else if (this.properties.showheader == true) {
-      headdisplay = "none";
-    } else {
-      headdisplay = "inline";
-    }
-    this.properties.jsonCode = $("#markup").text();
-    if (this.properties.multiSelect == undefined) {
-    } else if (this.properties.multiSelect.length >= 1) {
-      var selectedcanvaselements = this.properties.multiSelect;
-      $("body").append(`<style>li[data-tool*="alert"]{display:none}
+	public render(): void {
+		var headdisplay;
+		if (this.properties.showheader == undefined) {
+			headdisplay = "inline";
+		} else if (this.properties.showheader == true) {
+			headdisplay = "none";
+		} else {
+			headdisplay = "inline";
+		}
+		this.properties.jsonCode = $("#markup").text();
+		if (this.properties.multiSelect == undefined) {
+		} else if (this.properties.multiSelect.length >= 1) {
+			var selectedcanvaselements = this.properties.multiSelect;
+			$("body").append(`<style>li[data-tool*="alert"]{display:none}
 li[data-tool*="socialPost"]{display:none}
 li[data-tool*="header"]{display:none}
 li[data-tool*="image"]{display:none}
@@ -71,119 +71,121 @@ li[data-tool*="quote"]{display:none}
 li[data-tool*="linkTool"]{display:none}
 
 li[data-tool*="table"]{display:none}</style>`);
-      selectedcanvaselements.forEach((element) => {
-        $("body").append(
-          '<style> li[data-tool*="' + element + '"]{display:flex}</style>'
-        );
+			selectedcanvaselements.forEach((element) => {
+				$("body").append(
+					'<style> li[data-tool*="' + element + '"]{display:flex}</style>'
+				);
 
-      });
-    }
-    function getQueryStringParameter(param) {
-      if (window.location.href.indexOf("?") > -1) {
-        var params = document.URL.split("?")[1].split("&"); //Split Current URL With ? after that &
-        var strParams = "";
-        for (var i = 0; i < params.length; i = i + 1) {
-          //param,parse with given URL parameter
-          var singleParam = params[i].split("=");
-          if (singleParam[0] == param) {
-            return decodeURIComponent(singleParam[1]); //Decode URL Result
-          }
-        }
-      }
-    }
+			});
+		}
+		function getQueryStringParameter(param) {
+			if (window.location.href.indexOf("?") > -1) {
+				var params = document.URL.split("?")[1].split("&"); //Split Current URL With ? after that &
+				var strParams = "";
+				for (var i = 0; i < params.length; i = i + 1) {
+					//param,parse with given URL parameter
+					var singleParam = params[i].split("=");
+					if (singleParam[0] == param) {
+						return decodeURIComponent(singleParam[1]); //Decode URL Result
+					}
+				}
+			}
+		}
 
-    sp.setup({
-      spfxContext: this.context,
-    });
+		sp.setup({
+			spfxContext: this.context,
+		});
 
-    var headerreptext1;
-    if (this.properties.color == undefined) {
-      headerreptext1 = "#6dc3df";
-    } else if (this.properties.color == "#009adf") {
-      headerreptext1 = "#6dc3df";
-    } else if (this.properties.color == "#5c0b8a") {
-      headerreptext1 = "#bd83ca";
-    }
+		var headerreptext1;
+		if (this.properties.color == undefined) {
+			headerreptext1 = "#6dc3df";
+		} else if (this.properties.color == "#009adf") {
+			headerreptext1 = "#6dc3df";
+		} else if (this.properties.color == "#5c0b8a") {
+			headerreptext1 = "#bd83ca";
+		}
 
-    var mina = `font-family: 'Bristol' !important;`;
-    var mainfont = `font-family: 'thesans' !important;`;
-    var overlaycolor;
-    if (this.properties.color == undefined) {
-      overlaycolor = "rgba(0,60,165,.6)";
-    } else if (this.properties.color == "#009adf") {
-      overlaycolor = "rgba(0,60,165,.6)";
-    } else if (this.properties.color == "#5c0b8a") {
-      overlaycolor = "rgba(92,11,138,.6)";
-    }
-    if (this.properties.title != undefined) {
-      var replacetext = this.properties.title.replace(
-        "[",
-        '<span style="' +
-          mina +
-          " font-size:70px; color:" +
-          headerreptext1 +
-          '">'
-      );
-      var endreplacetext = replacetext.replace("]", "</span>");
-      var finaltext = endreplacetext.replace("|", "</br>");
-    }
-    var fileurl;
-    if (this.properties.filePickerResult != undefined) {
-      fileurl = this.properties.filePickerResult.fileAbsoluteUrl;
-    } else {
-      fileurl = "/";
-    }
-    var headertext;
-    var headerreptext;
+		var mina = `font-family: 'Bristol' !important;`;
+		var mainfont = `font-family: 'thesans' !important;`;
+		var overlaycolor;
+		if (this.properties.color == undefined) {
+			overlaycolor = "rgba(0,60,165,.6)";
+		} else if (this.properties.color == "#009adf") {
+			overlaycolor = "rgba(0,60,165,.6)";
+		} else if (this.properties.color == "#5c0b8a") {
+			overlaycolor = "rgba(92,11,138,.6)";
+		}
+		if (this.properties.title != undefined) {
+			var replacetext = this.properties.title.replace(
+				"[",
+				'<span style="' +
+				mina +
+				" font-size:70px; color:" +
+				headerreptext1 +
+				'">'
+			);
+			var endreplacetext = replacetext.replace("]", "</span>");
+			var finaltext = endreplacetext.replace("|", "</br>");
+		}
+		var fileurl;
+		if (this.properties.filePickerResult != undefined) {
+			fileurl = this.properties.filePickerResult.fileAbsoluteUrl;
+		} else {
+			fileurl = "/";
+		}
+		var headertext;
+		var headerreptext;
 
-    if (this.properties.color == undefined) {
-      headertext = "#007DB8";
-    } else if (this.properties.color == "#009adf") {
-      headertext = "#007DB8";
-    } else {
-      headertext = "#9e29b5";
-    }
+		if (this.properties.color == undefined) {
+			headertext = "#007DB8";
+		} else if (this.properties.color == "#009adf") {
+			headertext = "#007DB8";
+		} else {
+			headertext = "#9e29b5";
+		}
 
-    if (this.properties.color == undefined) {
-      headerreptext = "#003ca5";
-    } else if (this.properties.color == "#009adf") {
-      headerreptext = "#003ca5";
-    } else if (this.properties.color == "#5c0b8a") {
-      headerreptext = "#5c0b8a";
-    }
-    if (this.properties.intro != undefined || this.properties.intro != null || this.properties.intro != "") {
-      var headingreplacetext = this.properties.intro.replace(
-        "[",
-        '<span style="' +
-          mina +
-          " font-size:50px;position:relative;color:" +
-          headerreptext +
-          '">'
-      );
-      var headingendreplacetext = headingreplacetext.replace("]", "</span>");
-    } else {
-      headingendreplacetext = "";
-    }
-    $("#itemimage").attr("src", fileurl);
-    var imageheaderdesc;
+		if (this.properties.color == undefined) {
+			headerreptext = "#003ca5";
+		} else if (this.properties.color == "#009adf") {
+			headerreptext = "#003ca5";
+		} else if (this.properties.color == "#5c0b8a") {
+			headerreptext = "#5c0b8a";
+		}
+		if (this.properties.intro != undefined || this.properties.intro != null || this.properties.intro != "") {
+			var headingreplacetext = this.properties.intro.replace(
+				"[",
+				'<span style="' +
+				mina +
+				" font-size:50px;position:relative;color:" +
+				headerreptext +
+				'">'
+			);
+			var headingendreplacetext = headingreplacetext.replace("]", "</span>");
+		} else {
+			headingendreplacetext = "";
+		}
+		$("#itemimage").attr("src", fileurl);
+		var imageheaderdesc;
 
-    this.domElement.innerHTML =
-      `<div id="pagecolor" style="display:none">` +
-      this.properties.color +
-      `</div><div id="mainheader" style="` +
-      mainfont +
-      `height: 460px;
+		console.log(this.properties);
+
+		this.domElement.innerHTML =
+			`<div id="pagecolor" style="display:none">` +
+			this.properties.color +
+			`</div><div id="mainheader" style="` +
+			mainfont +
+			`height: 460px;
       overflow: hidden;" class="uk-inline">
 
-      <div style="width:100vw; height:800px; background-position:`+this.properties.imageposition+`" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="`+fileurl+`" uk-img></div>
+      <div style="width:100vw; height:800px; background-position:`+ this.properties.imageposition + `" class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="` + fileurl + `" uk-img></div>
     <div style="background-color: ` +
-      overlaycolor +
-      `" class="uk-overlay headerimg uk-position-cover">
+			overlaycolor +
+			`" class="uk-overlay headerimg uk-position-cover">
         <p style="` +
-      mainfont +
-      ` color:white;font-size:70px;margin-top:5%;margin-left:90px;line-height:75px"  id="itemoverlay" >` +
-      finaltext +
-      `</p>
+			mainfont +
+			` color:white;font-size:70px;margin-top:5%;margin-left:90px;line-height:75px"  id="itemoverlay" >` +
+			finaltext +
+			`</p>
     </div>
 </div>
 <div uk-grid style="background:rgba(0,0,0,.00">
@@ -194,38 +196,33 @@ li[data-tool*="table"]{display:none}</style>`);
     <div class="uk-container">
 
         <h1 style="` +
-      mainfont +
-      `color:` +
-      headertext +
-      `; font-size:50px" data-item="` +
-      this.properties.title +
-      `" id="bodytitle">` +
-      headingendreplacetext +
-      `</h1>
+			mainfont +
+			`color:` +
+			headertext +
+			`; font-size:50px" data-item="` +
+			this.properties.title +
+			`" id="bodytitle">` +
+			headingendreplacetext +
+			`</h1>
 
 
             <div style="width:85%;margin:auto; background:transparent;font-weight:600;line-height:40px;font-size:21px; ` +
-      mainfont +
-      `">
+			mainfont +
+			`">
             </br><div data-item="` +
-            this.properties.bodytext +
-            `" class="ce-paragraph">` +
-      this.properties.bodytext +
-      `</div>
+			this.properties.bodytext +
+			`" class="ce-paragraph">` +
+			this.properties.bodytext +
+			`</div>
            <a  data-item="` +
-           this.properties.actiontext +
-           `" style="width:85%;margin:auto;position:relative;left:30px;top:7px;font-size:12pt" class="ctaheader"  href="` +
-      this.properties.actionlink +
-      `"> <i  data-item="` +
-      this.properties.actiontext +
-      `null" class="triangleheader"></i>` +
-      this.properties.actiontext +
-      `</a>
+			this.properties.actiontext +
+			`" style="width:85%;margin:auto;position:relative;left:30px;top:7px;font-size:12pt" class="ctaheader"  href="` +
+			this.properties.actionlink + `">
+			${this.properties.actiontext.trim() && this.properties.actiontext !== null ? `<i data-item="${this.properties.actiontext}" class='triangleheader'></i>` : ""}` +
+			this.properties.actiontext +
+			`</a>
             </div>
-
         </div>
-
-
 </div>
 
     </div>
@@ -328,85 +325,85 @@ li[data-tool*="table"]{display:none}</style>`);
 </div>
 </div>
 `;
-    UIkit.modal("#modal-example", {});
-    var colorstyle = $("#pagecolor").text();
-    var slidenav;
-    if (colorstyle == undefined) {
-      slidenav = "#007DB8";
-    } else if (colorstyle == "undefined") {
-      slidenav = "#007DB8";
-    } else if (colorstyle == "#009adf") {
-      slidenav = "#007DB8";
-    } else if (colorstyle == "#5c0b8a") {
-      slidenav = "#9e29b5";
-    }
-    var slidenav1;
-    if (colorstyle == "undefined") {
-      slidenav1 = "#007DB8";
-    } else if (colorstyle == "#009adf") {
-      slidenav1 = "#007DB8";
-    } else if (colorstyle == "#5c0b8a") {
-      slidenav1 = "#5c0b8a";
-    }
+		UIkit.modal("#modal-example", {});
+		var colorstyle = $("#pagecolor").text();
+		var slidenav;
+		if (colorstyle == undefined) {
+			slidenav = "#007DB8";
+		} else if (colorstyle == "undefined") {
+			slidenav = "#007DB8";
+		} else if (colorstyle == "#009adf") {
+			slidenav = "#007DB8";
+		} else if (colorstyle == "#5c0b8a") {
+			slidenav = "#9e29b5";
+		}
+		var slidenav1;
+		if (colorstyle == "undefined") {
+			slidenav1 = "#007DB8";
+		} else if (colorstyle == "#009adf") {
+			slidenav1 = "#007DB8";
+		} else if (colorstyle == "#5c0b8a") {
+			slidenav1 = "#5c0b8a";
+		}
 
-    $(".img").on("click", function () {
-      $(".image").removeClass("selected");
-      $(this).addClass("selected");
-    });
-    async function uploadfile(filename, file) {
-      sp.web
-        .getFolderByServerRelativeUrl("Shared%20Documents")
-        .files.add(file.name, file, true);
+		$(".img").on("click", function () {
+			$(".image").removeClass("selected");
+			$(this).addClass("selected");
+		});
+		async function uploadfile(filename, file) {
+			sp.web
+				.getFolderByServerRelativeUrl("Shared%20Documents")
+				.files.add(file.name, file, true);
 
-      return setTimeout(this, 5000);
-    }
-    var savedraft = document.getElementById("savedraft");
-    savedraft.addEventListener("click", () => {
-      this.properties.htmlCode = $("#editorjs").html();
-      UIkit.notification({ message: "Post saved ", status: "success" });
+			return setTimeout(this, 5000);
+		}
+		var savedraft = document.getElementById("savedraft");
+		savedraft.addEventListener("click", () => {
+			this.properties.htmlCode = $("#editorjs").html();
+			UIkit.notification({ message: "Post saved ", status: "success" });
 
-      function autosave() {
-        $("#locationitems > div > span > span span").each(function (index) {
-          $("#locations").append($(this).text());
-        });
-        $("#departmentitems > div > span > span span").each(function (index) {
-          $("#teams").append($(this).text());
-        });
-        $("#savestatus").html("Saving..");
-        var posttitle = $("#gettitle").text();
+			function autosave() {
+				$("#locationitems > div > span > span span").each(function (index) {
+					$("#locations").append($(this).text());
+				});
+				$("#departmentitems > div > span > span span").each(function (index) {
+					$("#teams").append($(this).text());
+				});
+				$("#savestatus").html("Saving..");
+				var posttitle = $("#gettitle").text();
 
-        var postintro = $("#getintro").text();
-        var imagetext = $("#imagetext").text();
-        var postbody = $(".codex-editor__redactor").html();
-        $(".codex-editor__redactor").html();
-        var author = 6;
+				var postintro = $("#getintro").text();
+				var imagetext = $("#imagetext").text();
+				var postbody = $(".codex-editor__redactor").html();
+				$(".codex-editor__redactor").html();
+				var author = 6;
 
-        var iseditpost = $("#initialsaveid").text();
+				var iseditpost = $("#initialsaveid").text();
 
-        sp.web.lists.getByTitle("SR_Pages").items.add({
-          Title: posttitle,
-          Page_Name: posttitle,
+				sp.web.lists.getByTitle("SR_Pages").items.add({
+					Title: posttitle,
+					Page_Name: posttitle,
 
-          Image_Text: imagetext,
-          Header_Image: {
-            __metadata: { type: "SP.FieldUrlValue" },
-            Description: $("#previewimage").attr("src"),
-            Url: $("#previewimage").attr("src"),
-          },
-          Intro_Header: postintro,
+					Image_Text: imagetext,
+					Header_Image: {
+						__metadata: { type: "SP.FieldUrlValue" },
+						Description: $("#previewimage").attr("src"),
+						Url: $("#previewimage").attr("src"),
+					},
+					Intro_Header: postintro,
 
-          Intro_Content: postbody,
-          Page_Content: postbody,
-          EditorMarkup: $("#markup").text(),
-        });
-        $("#modal-sections").addClass("uk-open").hide();
-      }
-    });
+					Intro_Content: postbody,
+					Page_Content: postbody,
+					EditorMarkup: $("#markup").text(),
+				});
+				$("#modal-sections").addClass("uk-open").hide();
+			}
+		});
 
-    $("#pageheader").remove();
-    var url = this.context.pageContext.web.absoluteUrl;
-    $("body").append(
-      `<style id="pageheader" type="text/css">
+		$("#pageheader").remove();
+		var url = this.context.pageContext.web.absoluteUrl;
+		$("body").append(
+			`<style id="pageheader" type="text/css">
       [data-item="undefined"], [data-item="null"]{display:none}
 .triangleheader{width: 0;
   height: 0;
@@ -414,14 +411,14 @@ li[data-tool*="table"]{display:none}</style>`);
   border-left-width: 22px;
   border-right-width: 1px;
   border-top: 18px solid ` +
-        headerreptext +
-        `;
+			headerreptext +
+			`;
   top: 19px;
     position: relative;
     left: -6px;}
     .ctaheader{color:` +
-        headerreptext +
-        ` !important; font-family: 'thesans';}
+			headerreptext +
+			` !important; font-family: 'thesans';}
 
 #home > ul, #profile > ul {    max-height: 550px !Important;    height: 480px !important;    overflow-y: scroll;}
 .uk-tab-left, .uk-tab-right {    flex-direction: column;    margin-left: 0;    width: 100%;}
@@ -452,13 +449,13 @@ color: #53565a}
 
 
 div[data-automation-id*="pageHeader"]{display:` +
-        headdisplay +
-        `}
+			headdisplay +
+			`}
 
 .headerimg {
   padding: 30px;
   background: rgba(0,154,223,0.4);
-  background-image: url(`+url+`/Shared%20Documents/NW_headerimage_overlay_1.png);
+  background-image: url(`+ url + `/Shared%20Documents/NW_headerimage_overlay_1.png);
   background-repeat: no-repeat;
   background-position: right top;
 }
@@ -466,113 +463,116 @@ div[data-automation-id*="pageHeader"]{display:` +
 
 </style>
 `
-    );
+		);
 
-    var isedit = getQueryStringParameter("Mode");
-    if (this.displayMode == DisplayMode.Edit) {
-      $("#newpage").show();
-      $("#editpage").show();
-    } else {
-      $("#newpage").hide();
-      $("#editpage").hide();
-    }
-  }
+		var isedit = getQueryStringParameter("Mode");
+		if (this.displayMode == DisplayMode.Edit) {
+			$("#newpage").show();
+			$("#editpage").show();
+		} else {
+			$("#newpage").hide();
+			$("#editpage").hide();
+		}
+	}
 
-  private lists: IPropertyPaneDropdownOption[];
-  private items: IPropertyPaneDropdownOption[];
-  private listsDropdownDisabled: boolean = true;
+	private lists: IPropertyPaneDropdownOption[];
+	private items: IPropertyPaneDropdownOption[];
+	private listsDropdownDisabled: boolean = true;
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return {
-      pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription,
-          },
-          displayGroupsAsAccordion: true,
-          groups: [
-            {
-              groupName: "Header",
+	protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+		return {
+			pages: [
+				{
+					header: {
+						description: strings.PropertyPaneDescription,
+					},
+					displayGroupsAsAccordion: true,
+					groups: [
+						{
+							groupName: "Header",
 
-              groupFields: [
-                PropertyFieldFilePicker("filePicker", {
-                  context: this.context,
-                  filePickerResult: this.properties.filePickerResult,
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  onSave: (e: IFilePickerResult) => {
+							groupFields: [
+								PropertyFieldFilePicker("filePicker", {
+									context: this.context as any,
+									filePickerResult: this.properties.filePickerResult,
+									onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
+									properties: this.properties,
+									onSave: (e: IFilePickerResult) => {
 
-                    this.properties.filePickerResult = e;
-                  },
-                  onChanged: (e: IFilePickerResult) => {
+										this.properties.filePickerResult = e;
+									},
+									onChanged: (e: IFilePickerResult) => {
 
-                    this.properties.filePickerResult = e;
-                  },
-                  key: "filePickerId",
-                  buttonLabel: "Choose Image",
-                  label: "Choose Image",
-                }),
-                PropertyPaneChoiceGroup('imageposition', {
-                  label: "Image position",
-                  options: [
-                    { key: 'top', text: 'Top',
-                    imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
-                    imageSize: { width: 36, height: 36 },
-                    selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
-                  },
+										this.properties.filePickerResult = e;
+									},
+									key: "filePickerId",
+									buttonLabel: "Choose Image",
+									label: "Choose Image",
+								}),
+								PropertyPaneChoiceGroup('imageposition', {
+									label: "Image position",
+									options: [
+										{
+											key: 'top', text: 'Top',
+											imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png',
+											imageSize: { width: 36, height: 36 },
+											selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_top_left-256.png'
+										},
 
-                   { key: 'bottom', text: 'Bottom',
-                     imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
-                     imageSize: { width: 36, height: 36 },
-                     selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
-                   },
-                   { key: 'center', text: 'Center',
-                   imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
-                   imageSize: { width: 36, height: 36 },
-                   selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
-                 }
+										{
+											key: 'bottom', text: 'Bottom',
+											imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png',
+											imageSize: { width: 36, height: 36 },
+											selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/move_bottom_left-256.png'
+										},
+										{
+											key: 'center', text: 'Center',
+											imageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png',
+											imageSize: { width: 36, height: 36 },
+											selectedImageSrc: 'https://cdn0.iconfinder.com/data/icons/position-1/20/align_center-256.png'
+										}
 
 
 
-                 ]
-               }),
-                PropertyPaneCheckbox("showheader", {
-                  text: "Hide page header",
-                }),
-                PropertyPaneTextField("title", {
-                  label: "Title",
-                }),
-                PropertyPaneTextField("intro", {
-                  label: "Intro",
-                }),
-                PropertyPaneTextField("bodytext", {
-                  label: "Body Text",
-                  multiline: true,
-                }),
-                PropertyPaneDropdown("color", {
-                  label: "Theme color",
-                  options: [
-                    {
-                      key: "#009adf",
-                      text: "Blue",
-                    },
-                    {
-                      key: "#5c0b8a",
-                      text: "Purple",
-                    },
-                  ],
-                }),
-                PropertyPaneTextField("actiontext", {
-                  label: "Call to action text",
-                }),
-                PropertyPaneTextField("actionlink", {
-                  label: "Call to action link",
-                }),
-              ],
-            },
-          ],
-        },
-      ],
-    };
-  }
+									]
+								}),
+								PropertyPaneCheckbox("showheader", {
+									text: "Hide page header",
+								}),
+								PropertyPaneTextField("title", {
+									label: "Title",
+								}),
+								PropertyPaneTextField("intro", {
+									label: "Intro",
+								}),
+								PropertyPaneTextField("bodytext", {
+									label: "Body Text",
+									multiline: true,
+								}),
+								PropertyPaneDropdown("color", {
+									label: "Theme color",
+									options: [
+										{
+											key: "#009adf",
+											text: "Blue",
+										},
+										{
+											key: "#5c0b8a",
+											text: "Purple",
+										},
+									],
+								}),
+								PropertyPaneTextField("actiontext", {
+									label: "Call to action text",
+								}),
+								PropertyPaneTextField("actionlink", {
+									label: "Call to action link",
+								}),
+							],
+						},
+					],
+				},
+			],
+		};
+	}
 }

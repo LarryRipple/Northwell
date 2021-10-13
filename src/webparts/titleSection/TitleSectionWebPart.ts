@@ -1,44 +1,18 @@
-import { Version } from '@microsoft/sp-core-library';
-import {
-  IPropertyPaneConfiguration,
-  PropertyPaneTextField
-} from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
+import { IPropertyPaneConfiguration, PropertyPaneSlider, PropertyPaneTextField } from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { PropertyPaneDropdown } from "@microsoft/sp-property-pane";
 
-import { sp } from "@pnp/sp/presets/all";
-import UIkit from "uikit";
-import Icons from "uikit/dist/js/uikit-icons";
-
-import {
-  PropertyFieldFilePicker,
-  IFilePickerResult,
-} from "@pnp/spfx-property-controls/lib/PropertyFieldFilePicker";
-
-import * as $ from "jquery";
-
-window["jQuery"] = window["$"] = $;
-
-import {
-  IPropertyPaneDropdownOption,
-  PropertyPaneCheckbox,
-  PropertyPaneDropdown,
-} from "@microsoft/sp-property-pane";
-
-require("uikit/dist/css/uikit.min.css");
-require("uikit/dist/js/uikit.min.js");
-import * as strings from 'TitleSectionWebPartStrings';
+import * as strings from "TitleSectionWebPartStrings";
 
 export interface ITitleSectionWebPartProps {
   Title: string;
-  color:string;
+  color: string;
+  fontSize: number;
 }
 
 export default class TitleSectionWebPart extends BaseClientSideWebPart<ITitleSectionWebPartProps> {
-
   public render(): void {
     var mina = `font-family: 'Bristol' !important;`;
-    var mainfont = `font-family: 'thesans' !important;`;
     var headerreptext1;
     if (this.properties.color == undefined) {
       headerreptext1 = this.properties.color;
@@ -51,16 +25,16 @@ export default class TitleSectionWebPart extends BaseClientSideWebPart<ITitleSec
       var replacetext = this.properties.Title.replace(
         "[",
         '<span style="' +
-          mina +
-          " font-size:70px; color:" +
-          this.properties.color +
-          '">'
+        mina +
+        " font-size:" + this.properties.fontSize + "px; color:" +
+        this.properties.color +
+        '">'
       );
       var endreplacetext = replacetext.replace("]", "</span>");
       var finaltext = endreplacetext.replace("|", "</br>");
     }
 
-    this.domElement.innerHTML = `<div style="width:100%; text align:center"><h1 style=" text-align:center; color:`+this.properties.color+`" class="uk-heading-medium uk-align-center">`+finaltext+`</h1></div>`;
+    this.domElement.innerHTML = `<div style="width:100%; text-align:center"><h1 style=" text-align:center; font-family: 'thesans' !important; font-size:` + this.properties.fontSize + `px; color:` + this.properties.color + `" class="uk-heading-medium uk-align-center">` + finaltext + `</h1></div>`;
   }
 
 
@@ -78,7 +52,16 @@ export default class TitleSectionWebPart extends BaseClientSideWebPart<ITitleSec
               groupFields: [
                 PropertyPaneTextField('Title', {
                   label: "Title"
-                }),PropertyPaneDropdown("color", {
+                }),
+                PropertyPaneSlider('fontSize', {
+                  label: "Font size",
+                  min: 22,
+                  max: 80,
+                  value: 26,
+                  showValue: true,
+                  step: 1
+                }),
+                PropertyPaneDropdown("color", {
                   label: "Heading color",
                   options: [
                     {
