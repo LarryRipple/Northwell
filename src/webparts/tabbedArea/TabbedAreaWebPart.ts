@@ -363,7 +363,7 @@ export default class TabbedAreaWebPart extends BaseClientSideWebPart<ITabbedArea
     </style>`);
 		var blogun = "blog" + uniqueref
 		this.domElement.innerHTML = `<div id="` + uniqueref + `"></div>
-   		 <div id="`+ blogun + `" class="uk-child-width-1-3@m uk-grid-match" uk-grid ${this.properties.type === "cards" ? `style="display: flex; justify-content: center;"` : ""}></div>`;
+   		 <div id="`+ blogun + `" class="uk-child-width-1-.properties.sliderWithCallout+`@m uk-grid-match" uk-grid ${this.properties.type === "cards" ? `style="display: flex; justify-content: center;"` : ""}></div>`;
 		sp.setup({
 			spfxContext: this.context
 		});
